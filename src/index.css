@@ -1,5 +1,27 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
+
+/*
+Header
+*/
+
+header h1{
+  font-family: 'Raleway';
+  display: inline;
+  color:black;
+}
+
+nav{
+  margin-top: 1%;
+}
+
+.splitter{
+  height: 2px;
+  color: #7d97ad;
+  background-color: #7d97ad;
+}
+
+
