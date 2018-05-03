@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from 'axios';
+
 
 export default class SesignUp extends React.Component{
     constructor(props) {
@@ -24,6 +26,13 @@ export default class SesignUp extends React.Component{
       handleSubmit = event => {
         event.preventDefault();
       }
+
+      handleClick(){
+        console.log(this.state);
+        let uri = 'http://127.0.0.1:8000/api/auth/register';
+          axios.post(uri, this.state).then((response) => {        
+        });
+        }
     
 
 
@@ -44,8 +53,6 @@ export default class SesignUp extends React.Component{
                     <FormGroup controlId="name" bsSize="large">
                     <ControlLabel>Name</ControlLabel>
                     <FormControl
-                        autoFocus
-                        type="email"
                         value={this.state.name}
                         onChange={this.handleChange}
                     />
@@ -63,6 +70,7 @@ export default class SesignUp extends React.Component{
                     bsSize="large"
                     disabled={!this.validateForm()}
                     type="submit"
+                    onClick={this.handleClick.bind(this)}
                     >
                     Submit
                     </Button>
