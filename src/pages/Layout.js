@@ -6,16 +6,16 @@ export default class Layout extends React.Component{
     render() {
         return (
             <div>
-                <div class="container">
+                <div className="container">
                 <header>
                     <h1>Reagency</h1>
                     <nav>
-                        <Link to="about" class="btn btn-info">About Us</Link>
-                        <Link to="signIn" class="btn btn-danger">Sign In</Link>
-                        <Link to="signUp"  class="btn btn-success">Sign Up</Link>
+                        <Link to="about" className="btn btn-info">About Us</Link>
+                        <Link to="signIn" className="btn btn-danger">Sign In</Link>
+                        <Link to="signUp"  className="btn btn-success">Sign Up</Link>
                     </nav>
                 </header>
-                <hr class="splitter"/>
+                <hr className="splitter"/>
                 <main>
                 <div>
                     {this.props.children}

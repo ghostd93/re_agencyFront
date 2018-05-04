@@ -8,15 +8,35 @@ export default class SignIn extends React.Component{
     
         this.state = {
           email: "",
-          password: ""
+          password: "",
+          hello: "",
+          user: {
+            token: "",
+            expires_in: ""
+          }
         };
     }
     handleClick(){
           console.log(this.state);
           let uri = 'http://127.0.0.1:8000/api/auth/login';
-            axios.post(uri, this.state).then((response) => {
-           
-    });
+          
+            axios.post(uri, this.state)
+            .then((response) => {
+                console.log(response);
+                if(response.status === 200){
+                    alert("success");
+                    this.setState({user:{
+                        token: response.data.access_token,
+                        expires_in: response.data.expires_in
+                    }})
+                    console.log(this.state.user);
+                }
+                
+            })
+            .catch(error => {
+                console.log("error",error.response.data.error);
+                alert(error.response.data.error);
+            });
     }
 
 
