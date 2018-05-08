@@ -10,3 +10,13 @@ main{
     margin-top: 70px;
     min-height: 500px;
 }
+
+.buttons{
+    padding: 6px 5px 0px 0px;
+    
+}
+
+.sign{
+    width: 250px;
+    padding: 10px;
+}

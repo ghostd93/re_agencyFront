@@ -39,9 +39,9 @@ export default class SesignUp extends React.Component{
     render() {
         return (
             <div>
-                <h1>Sign Up</h1>
+                <h4>Sign Up</h4>
                 <form onSubmit={this.handleSubmit}>
-                    <FormGroup controlId="email" bsSize="large">
+                    <FormGroup controlId="email" bsSize="xsmall">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl
                         autoFocus
@@ -50,14 +50,14 @@ export default class SesignUp extends React.Component{
                         onChange={this.handleChange}
                     />
                     </FormGroup>
-                    <FormGroup controlId="name" bsSize="large">
+                    <FormGroup controlId="name" bsSize="xsmall">
                     <ControlLabel>Name</ControlLabel>
                     <FormControl
                         value={this.state.name}
                         onChange={this.handleChange}
                     />
                     </FormGroup>
-                    <FormGroup controlId="password" bsSize="large">
+                    <FormGroup controlId="password" bsSize="xsmall">
                     <ControlLabel>Password</ControlLabel>
                     <FormControl
                         value={this.state.password}
@@ -67,7 +67,7 @@ export default class SesignUp extends React.Component{
                     </FormGroup>
                     <Button
                     block
-                    bsSize="large"
+                    bsSize="xsmall"
                     disabled={!this.validateForm()}
                     type="submit"
                     onClick={this.handleClick.bind(this)}

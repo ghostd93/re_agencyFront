@@ -43,9 +43,9 @@ import { signIn } from '../actions/index';
     render() {
         return (
             <div>
-                <h1>Sign In</h1>
+                <h4>Sign In</h4>
                 <form onSubmit={this.handleSubmit}>
-                    <FormGroup controlId="email" bsSize="large">
+                    <FormGroup controlId="email" bsSize="xsmall">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl
                         autoFocus
@@ -54,7 +54,7 @@ import { signIn } from '../actions/index';
                         onChange={this.handleChange}
                     />
                     </FormGroup>
-                    <FormGroup controlId="password" bsSize="large">
+                    <FormGroup controlId="password" bsSize="xsmall">
                     <ControlLabel>Password</ControlLabel>
                     <FormControl
                         value={this.state.password}
@@ -64,7 +64,7 @@ import { signIn } from '../actions/index';
                     </FormGroup>
                     <Button
                     block
-                    bsSize="large"
+                    bsSize="xsmall"
                     disabled={!this.validateForm()}
                     type="submit"
                     onClick={this.handleClick.bind(this)}

@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router';
 import { logout } from '../../actions/index';
 import { connect } from 'react-redux';
-
+import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown} from 'react-bootstrap';
 import Profile from './Nav/Profile';
+import SignUp from '../SignUp';
+import SignIn from '../SignIn';
+
+
 
 
 class Nav extends React.Component{
@@ -26,10 +30,37 @@ class Nav extends React.Component{
                     </div>
                     <div class="collapse navbar-collapse" id="top-navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><Link to="about" className="btn btn-info">About Us</Link></li>
-                        {isAuthenticated ? (<li><button onClick={this.handleClick.bind(this)}  className="btn">{username} Log out</button></li>) :( <li><Link to="signIn" className="btn btn-danger">Sign In</Link></li>) }
-                        {isAuthenticated ? (<li><Profile /></li>) :( <li> <Link to="signUp"  className="btn btn-success">Sign Up</Link></li>) }
-                        
+                        <Dropdown id="dropdown-size-large" className="buttons">
+                            <Dropdown.Toggle>
+                                About us
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <MenuItem eventKey="1"><Link to="about">About Us</Link></MenuItem>
+                                <MenuItem eventKey="2">Another action</MenuItem>
+                                <MenuItem eventKey="3">Something else here</MenuItem>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        {isAuthenticated ? (<li><button onClick={this.handleClick.bind(this)}  className="btn buttons">{username} Log out</button></li>) :( 
+                        <Dropdown id="dropdown-size-large" className="buttons">
+                            <Dropdown.Toggle>
+                                <Glyphicon glyph="user"/> Sign In
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu className="sign">
+                                <SignIn/>
+                            </Dropdown.Menu>
+                        </Dropdown>) }
+
+                        {isAuthenticated ? (<li><Profile /></li>) :( 
+                        <Dropdown id="dropdown-size-large" className="buttons">
+                            <Dropdown.Toggle>
+                                <Glyphicon glyph="user"/> Sign Up
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu className="sign">
+                                <SignUp/>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    )}
                     </ul>
                   </div>   
                 </div>      
