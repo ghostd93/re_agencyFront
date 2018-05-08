@@ -2,41 +2,23 @@ import React from 'react';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios';
 
-export default class SignIn extends React.Component{
+import { connect } from 'react-redux';
+import { signIn } from '../actions/index';
+
+ class SignIn extends React.Component{
     constructor(props) {
         super(props);
     
         this.state = {
           email: "",
-          password: "",
-          hello: "",
-          user: {
-            token: "",
-            expires_in: ""
-          }
+          password: ""
         };
     }
-    handleClick(){
-          console.log(this.state);
-          let uri = 'http://127.0.0.1:8000/api/auth/login';
-          
-            axios.post(uri, this.state)
-            .then((response) => {
-                console.log(response);
-                if(response.status === 200){
-                    alert("success");
-                    this.setState({user:{
-                        token: response.data.access_token,
-                        expires_in: response.data.expires_in
-                    }})
-                    console.log(this.state.user);
-                }
-                
-            })
-            .catch(error => {
-                console.log("error",error.response.data.error);
-                alert(error.response.data.error);
-            });
+    handleClick(e){
+        e.preventDefault();
+          console.log(this.props);
+         
+          this.props.signIn(this.state);
     }
 
 
@@ -94,3 +76,4 @@ export default class SignIn extends React.Component{
         );
     }
 }
+export default connect(null, { signIn })(SignIn);

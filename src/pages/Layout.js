@@ -1,28 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Nav from './Layout/Nav';
+import Footer from './Layout/Footer';
+
+import './Layout/Layout.css';
+
 export default class Layout extends React.Component{
 
     render() {
         return (
-            <div>
-                <div className="container">
-                <header>
-                    <h1>Reagency</h1>
-                    <nav>
-                        <Link to="about" className="btn btn-info">About Us</Link>
-                        <Link to="signIn" className="btn btn-danger">Sign In</Link>
-                        <Link to="signUp"  className="btn btn-success">Sign Up</Link>
-                    </nav>
-                </header>
-                <hr className="splitter"/>
-                <main>
-                <div>
-                    {this.props.children}
+                <div >
+                    <header>
+                        <Nav />
+                    </header>
+                    <main className="container">
+                        <div>
+                            {this.props.children}
+                        </div>
+                    </main>
+                    <Footer className="container" />
                 </div>
-                </main>
-                </div>
-            </div>
         );
     }
 }

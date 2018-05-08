@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
 
     render() {
         return (
-            <footer>Crafted with love in PWSZ Oświęcim!</footer>
+            <footer className="container">Crafted with love in PWSZ Oświęcim!</footer>
         )
     }
 }
