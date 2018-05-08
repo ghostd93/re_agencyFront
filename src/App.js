@@ -17,6 +17,7 @@ class App extends Component {
       <div>
       <Router history={hashHistory} >
         <Route path="/" component={Layout}>
+            <IndexRoute component={About} />
             <Route path="about" component={About}></Route>
             <Route path="signIn" component={SignIn}></Route>
             <Route path="signUp" component={SignUp}></Route>

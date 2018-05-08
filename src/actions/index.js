@@ -24,8 +24,8 @@ export function signIn(credentials) {
                
         })
         .catch(error => {
-            console.log("error",error.response.data.error);
-            alert(error.response.data.error);
+            console.log("error",error);
+            alert(error.response);
             dispatch(logon(false,{}))
         })
     }
