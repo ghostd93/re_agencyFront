@@ -30,16 +30,16 @@ class Nav extends React.Component{
                     </div>
                     <div class="collapse navbar-collapse" id="top-navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <Dropdown id="dropdown-size-large" className="buttons">
-                            <Dropdown.Toggle>
-                                About us
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <MenuItem eventKey="1"><Link to="about">About Us</Link></MenuItem>
-                                <MenuItem eventKey="2">Another action</MenuItem>
-                                <MenuItem eventKey="3">Something else here</MenuItem>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                       <li> <Dropdown id="dropdown-size-large" className="buttons">
+                       <Dropdown.Toggle>
+                           Browse
+                       </Dropdown.Toggle>
+                       <Dropdown.Menu>
+                           <MenuItem eventKey="1"><Link to="about">About Us</Link></MenuItem>
+                           <MenuItem eventKey="2"><Link to="advertisements">Real Estates</Link></MenuItem>
+                           <MenuItem eventKey="3">Something else here</MenuItem>
+                       </Dropdown.Menu>
+                   </Dropdown></li>
 
                         {isAuthenticated ? (<li><button onClick={this.handleClick.bind(this)}  className="btn buttons">{username} Log out</button></li>) :( 
                         <Dropdown id="dropdown-size-large" className="buttons">
