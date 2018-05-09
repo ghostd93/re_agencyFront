@@ -14,9 +14,9 @@ export default class Advertisements extends React.Component {
         };
     }
 
-    componentDidMount() {
-        window.addEventListener('load', this.getAllAdv);
-     }
+    // componentDidMount() {
+    //     window.addEventListener('load', this.getAllAdv);
+    //  }
     
     getAllAdv(){
         axios.get(url).then((response) => {
@@ -27,7 +27,7 @@ export default class Advertisements extends React.Component {
     }
 
     getImg(id){
-        return axios.get(url+"/"+ id + "/image").then((response) =>{
+        return axios.get(url + "/"+ id + "/image").then((response) =>{
             let url = response.data.data[0].url;
             console.log(url);
         });
@@ -38,29 +38,30 @@ export default class Advertisements extends React.Component {
 
 
     render() {
+        if(this.state.query === ""){
+            this.getAllAdv();
+        }
+        
         return (
             <main className="row">
                 <h1>Real Estate</h1>
-                <button onClick={this.getImg.bind(this)}>click</button>
                 <h3></h3>
-                <div className="col-sm-3">
                     {
                         this.state.advertisements.map((advert) => {
                             let imgurl = this.getImg(advert.id);
                             return(
-                                <div className="advertisements" key={advert.type}>
+                                <div className="col-sm-3 advertisement" key={advert.id}>
                                 <p>Status: {advert.status}</p>
-                                <p>{advert.admin_notes}</p>
-                                <p>{advert.date_of_announcement}</p>
-                                <p>{advert.price}</p>
-                                <p>{advert.description}</p>
-                                <p>{advert.property_id}</p>
+                                <p>Admin notes:{advert.admin_notes}</p>
+                                <p>date_of_announcement:{advert.date_of_announcement}</p>
+                                <p>price:{advert.price}</p>
+                                <p>description:{advert.description}</p>
+                                <p>property_id:{advert.property_id}</p>
                                <img src={imgurl} alt="" />
                                 </div>
                             )
                         })
                     }
-                </div>
             </main>
         )
     }
