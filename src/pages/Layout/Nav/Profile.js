@@ -1,5 +1,6 @@
 import React from 'react';
-import { DropdownMenu, MenuItem } from 'react-bootstrap-dropdown-menu';
+
+import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
  
 class Profile extends React.Component {
   constructor() {
@@ -18,14 +19,11 @@ class Profile extends React.Component {
  
   render() {
     return (
-      <DropdownMenu  userName="Chris Smith" position="left">
-        <MenuItem text="1" location="/home" />
-        <MenuItem text="Edit Profile" location="/profile" />
-        <MenuItem text="Change Password" location="/change-password" />
-        <MenuItem text="Privacy Settings" location="/privacy-settings" />
-        <MenuItem text="Delete Account" onClick={this.deleteAccount} />
-        <MenuItem text="Logout" onClick={this.logout} />
-      </DropdownMenu>
+        <div>
+        <MenuItem eventKey="1">1</MenuItem>
+        <MenuItem eventKey="2">2</MenuItem>
+        <MenuItem eventKey="3">Something else here</MenuItem>    
+        </div>
     );
   }
 }

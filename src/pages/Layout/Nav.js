@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { logout, getUser } from '../../actions/index';
 
 import { connect } from 'react-redux';
-import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown} from 'react-bootstrap';
+import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
 import Profile from './Nav/Profile';
 import SignUp from '../SignUp';
 import SignIn from '../SignIn';
@@ -49,7 +49,7 @@ class Nav extends React.Component{
                        </Dropdown.Menu>
                    </Dropdown></li>
 
-                        {isAuthenticated ? (<li><button onClick={this.handleClick.bind(this)}  className="btn buttons">{username} Log out</button></li>) :( 
+                        {isAuthenticated ? ("") :(
                         <Dropdown id="dropdown-size-large" className="buttons">
                             <Dropdown.Toggle>
                                 <Glyphicon glyph="user"/> Sign In
@@ -59,7 +59,21 @@ class Nav extends React.Component{
                             </Dropdown.Menu>
                         </Dropdown>) }
 
-                        {isAuthenticated ? (<li><Profile /></li>) :( 
+                        {isAuthenticated ? 
+                            (
+                            <Dropdown id="dropdown-size-large" className="buttons">
+                            <Dropdown.Toggle>
+                                <Glyphicon glyph="user"/> {username}
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu className="sign">
+                                <Profile />
+                                {isAuthenticated ? (
+                                    <MenuItem onClick={this.handleClick.bind(this)}>Log Out</MenuItem>
+                                ) :("")}
+
+                            </Dropdown.Menu>
+                            </Dropdown>
+                            ) :( 
                         <Dropdown id="dropdown-size-large" className="buttons">
                             <Dropdown.Toggle>
                                 <Glyphicon glyph="user"/> Sign Up

@@ -12,7 +12,7 @@ import reducer from './reducers';
 import App from './App';
 
 const persistedState = loadState();
-console.log("heheh",persistedState);
+
 // const enhancer = compose(
 //     applyMiddleware(thunk),
 //     window.devToolsExtension ? window.devToolsExtension() : f => f,
