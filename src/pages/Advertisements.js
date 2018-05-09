@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const  url = "http://127.0.0.1:8000/api/advertisement";
+const  url = " http://81.2.246.98:8000/api/advertisement";
 
 export default class Advertisements extends React.Component {
     constructor(props){
@@ -9,14 +9,14 @@ export default class Advertisements extends React.Component {
         this.getAllAdv =  this.getAllAdv.bind(this);
         this.state = {
             query: "",
-            advertisements: [],
+            advertisements: []
             
         };
     }
 
-    // componentDidMount() {
-    //     window.addEventListener('load', this.getAllAdv);
-    //  }
+    componentDidMount() {
+        window.addEventListener('load', this.getAllAdv);
+     }
     
     getAllAdv(){
         axios.get(url).then((response) => {
@@ -27,9 +27,11 @@ export default class Advertisements extends React.Component {
     }
 
     getImg(id){
-        return axios.get(url + "/"+ id + "/image").then((response) =>{
-            let url = response.data.data[0].url;
-            console.log(url);
+         axios.get(url + "/"+ id + "/image").then((response) =>{
+            var url2 = response.data.data[0].url;
+            console.log("img1 " + url2);
+            return url2;
+
         });
     }
 
@@ -39,7 +41,7 @@ export default class Advertisements extends React.Component {
 
     render() {
         if(this.state.query === ""){
-            this.getAllAdv();
+            // this.getAllAdv();
         }
         
         return (
@@ -47,17 +49,16 @@ export default class Advertisements extends React.Component {
                 <h1>Real Estate</h1>
                 <h3></h3>
                     {
-                        this.state.advertisements.map((advert) => {
-                            let imgurl = this.getImg(advert.id);
+                        this.state.advertisements.map((advert) => {  
                             return(
-                                <div className="col-sm-3 advertisement" key={advert.id}>
+                                <div className="col-sm-4 advertisement" key={advert.id}>
                                 <p>Status: {advert.status}</p>
-                                <p>Admin notes:{advert.admin_notes}</p>
+                                <p>Type:{advert.type}</p>
                                 <p>date_of_announcement:{advert.date_of_announcement}</p>
                                 <p>price:{advert.price}</p>
                                 <p>description:{advert.description}</p>
                                 <p>property_id:{advert.property_id}</p>
-                               <img src={imgurl} alt="" />
+                               <img src={advert.photos[0].thumb_url} alt="" />
                                 </div>
                             )
                         })
