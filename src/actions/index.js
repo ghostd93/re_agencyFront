@@ -4,6 +4,35 @@ import { LOGON } from '../actions/types';
 
 const url = "http://127.0.0.1:8000/api/auth/";
 
+// export function getUser(){
+//     return dispatch =>{
+//          if((localStorage.getItem('user')) && (localStorage.getItem('token'))){
+//             dispatch(logon(true,localStorage.getItem('user')));
+//          }
+//     }
+// }
+
+export function loadState() {
+    try{
+        const serializedState = localStorage.getItem('state');
+        if(serializedState === null){
+            return undefined;
+        }
+        return JSON.parse(serializedState);
+    }catch(error){
+        return undefined;
+    }
+};
+
+export function saveState(state) {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('state', serializedState );
+    }catch (err) {
+
+    }
+};
+
 export function signIn(credentials) {
     return dispatch =>{
         console.log(credentials);
@@ -38,10 +67,12 @@ export function logout() {
         }
     );
       localStorage.removeItem('token');
+      localStorage.removeItem('state');
       setAuthorizationToken(false);
       dispatch(logon(false,{}));
     }
   }
+
 
 export function signUp(credentials) {
     return dispatch =>{

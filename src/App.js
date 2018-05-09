@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory} from 'react-router';
+import { logon } from './actions/index';
 
 
 import Layout from './pages/Layout';
@@ -11,7 +12,10 @@ import Advertisements from './pages/Advertisements';
 
 
 
+
 class App extends Component {
+
+
   render() {
     return (
       <div>
@@ -30,9 +34,13 @@ class App extends Component {
   }
 }
 
-export default App;
 
-
+function mapStateToProps(state) {
+    return {
+      auth: state
+    };
+  }
+export default connect(mapStateToProps, { logon })(App);
 
 
 

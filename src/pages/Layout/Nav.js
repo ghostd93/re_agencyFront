@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { logout } from '../../actions/index';
+import { logout, getUser } from '../../actions/index';
+
 import { connect } from 'react-redux';
 import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown} from 'react-bootstrap';
 import Profile from './Nav/Profile';
@@ -11,6 +12,13 @@ import SignIn from '../SignIn';
 
 
 class Nav extends React.Component{
+
+    componentDidMount() {
+  
+      }
+    
+      
+
     handleClick(e){
         e.preventDefault();
         console.log(this.props);
