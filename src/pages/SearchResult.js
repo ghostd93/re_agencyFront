@@ -1,7 +1,8 @@
 import React from 'react';
 
 
-export default class About extends React.Component {
+export default class SearchResult extends React.Component {
+
 
     render() {
         return (

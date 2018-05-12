@@ -46,19 +46,17 @@ export default class Advertisements extends React.Component {
         
         return (
             <main className="row">
-                <h1>Real Estate</h1>
-                <h3></h3>
                     {
                         this.state.advertisements.map((advert) => {  
                             return(
-                                <div className="col-sm-4 advertisement" key={advert.id}>
-                                <p>Status: {advert.status}</p>
-                                <p>Type:{advert.type}</p>
-                                <p>date_of_announcement:{advert.date_of_announcement}</p>
-                                <p>price:{advert.price}</p>
-                                <p>description:{advert.description}</p>
-                                <p>property_id:{advert.property_id}</p>
-                               <img src={advert.photos[0].thumb_url} alt="" />
+                                <div className="card" key={advert.id}>
+                                    <img src={advert.photos[0].thumb_url} alt="" className="advPhoto"/>
+                                    <div className="cardDesc">
+                                        <p>Data dodania: {advert.date_of_announcement}</p>
+                                        <p>Cena: {advert.price} zł</p>
+                                        <p>Opis: {advert.description}</p>
+                                        <p>Nieruchomość na {advert.type}</p>
+                                    </div>
                                 </div>
                             )
                         })
