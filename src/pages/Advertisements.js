@@ -14,7 +14,6 @@ class Advertisements extends React.Component {
             advertisements: []
             
         };
-<<<<<<< HEAD
         this.handleQueryChange = this.handleQueryChange.bind(this);
     }
 
@@ -24,14 +23,6 @@ class Advertisements extends React.Component {
 
      componentDidUpdate(){
          this.handleQueryChange();
-=======
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    componentDidMount() {
-        window.addEventListener('load', this.getAllAdv);
-        
->>>>>>> 7a78f798defc14e389e594fada6fda31d9d258ce
      }
     
     getAllAdv(){
@@ -50,7 +41,6 @@ class Advertisements extends React.Component {
 
         });
     }
-<<<<<<< HEAD
 
     handleQueryChange() {
         if(this.state.query === ""){
@@ -66,11 +56,6 @@ class Advertisements extends React.Component {
 
     }
 
-=======
-    handleClick(){
-        console.log("propsy" + this.props);
-    }
->>>>>>> 7a78f798defc14e389e594fada6fda31d9d258ce
       
     componentWillReceiveProps(newProps){
         if (this.state.query !== newProps.route.query) {
@@ -82,19 +67,11 @@ class Advertisements extends React.Component {
 
 
     render() {
-<<<<<<< HEAD
         this.handleQueryChange
         console.log(this.props.auth.query);
         return (
             <main className="row">
             <h1>{this.props.auth.query}</h1>
-=======
-        console.log(this.props);
-        return (
-            <main className="row">
-            <div>Query:{this.props.route.query}</div>
-            
->>>>>>> 7a78f798defc14e389e594fada6fda31d9d258ce
                     {
                         this.state.advertisements.map((advert) => {  
                             return(

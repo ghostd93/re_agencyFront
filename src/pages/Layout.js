@@ -14,32 +14,15 @@ export default class Layout extends React.Component{
                 query: "",
                 estates: []
             }
-            this.getQuery = this.getQuery.bind(this);
-        }
-    
-        getQuery(term) {       
-            this.setState({query: term});
-            this.props.route.getQ(this.state.query);
 
         }
-
-    constructor(props){
-        super(props);
-        this.state ={
-            query: ''
-        }
-        
-
-
-    
-    }
-
+ 
     render() {
         // console.log(this.props);
         return (
                 <div >
                     <header>
-                        <Nav handleQuery={this.getQuery} />
+                        <Nav />
 
                     </header>
                     <main className="container">
