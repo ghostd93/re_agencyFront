@@ -1,26 +1,33 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
-const  url = " http://81.2.246.98:8000/api/advertisement";
+const  url = "http://81.2.246.98:8000/api/advertisement";
 
-export default class Advertisements extends React.Component {
+
+class Advertisements extends React.Component {
     constructor(props){
         super(props);
         this.getAllAdv =  this.getAllAdv.bind(this);
         this.state = {
-            query: "",
+            query: this.props.auth.query,
             advertisements: []
             
         };
+        this.handleQueryChange = this.handleQueryChange.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener('load', this.getAllAdv);
+        window.addEventListener('load', this.handleQueryChange);
+     }
+
+     componentDidUpdate(){
+         this.handleQueryChange();
      }
     
     getAllAdv(){
         axios.get(url).then((response) => {
-            const ad  = response.data.data;
+            const ad  = response.data;
             console.log(ad);
             this.setState({advertisements: ad});
       });
@@ -35,17 +42,30 @@ export default class Advertisements extends React.Component {
         });
     }
 
+    handleQueryChange() {
+        if(this.state.query === ""){
+            this.getAllAdv();
+        }else{
+            const url = `http://81.2.246.98:8000/api/search?query=${this.state.query}`;
+            axios.get(url).then((response) => {
+                console.log(response.data);
+                this.setState({advertisements: response.data.data});
+            });
+        }
+        
+
+    }
+
       
 
 
 
     render() {
-        if(this.state.query === ""){
-            // this.getAllAdv();
-        }
-        
+        this.handleQueryChange
+        console.log(this.props.auth.query);
         return (
             <main className="row">
+            <h1>{this.props.auth.query}</h1>
                     {
                         this.state.advertisements.map((advert) => {  
                             return(
@@ -65,3 +85,11 @@ export default class Advertisements extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+      auth: state
+    };
+  }
+
+  export default connect(mapStateToProps )(Advertisements);

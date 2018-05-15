@@ -1,12 +1,14 @@
 
-import { LOGON } from '../actions/types';
+import { LOGON, QUERY } from '../actions/types';
 
 const defaultState = {  
         user: {
             username: "",
-            admin: false
+            admin: false,
+            
         },
-        isAuthenticated: false
+        isAuthenticated: false,
+        query: "asdas"
     }
     
 export default (state = defaultState, action = {}) =>{
@@ -15,11 +17,19 @@ export default (state = defaultState, action = {}) =>{
             return {
                 ...state,
                 user: action.user,
-                isAuthenticated: action.success
-        };
-            default:
+                isAuthenticated: action.success,
+                query: ""
+            };
+        case QUERY:
+            return {
+                ...state,
+                query: action.query
+            };
+        default:
             return state;
         }
-}   
+        };
+        
+
 
 

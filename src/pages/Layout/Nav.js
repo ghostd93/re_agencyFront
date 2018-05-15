@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { logout, getUser } from '../../actions/index';
+import { logout, getUser, getQuery } from '../../actions/index';
 import request from 'superagent';
 import { connect } from 'react-redux';
 import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
@@ -17,13 +17,14 @@ class Nav extends React.Component{
         super();
 
         this.state = {
+            query: '',
             estates: []
         }
     }
 
     handleTermChange(term) {
         const url = `http://81.2.246.98:8000/api/search?query=${term}`;
-
+        console.log("tutaj jest nav" + term);
         request.get(url, function(err, res) {
             console.log(res.body.data[0]);
         });
@@ -57,7 +58,7 @@ class Nav extends React.Component{
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                     </ul>
-                    <SearchBar onTermChange={this.handleTermChange} />
+                    <SearchBar />
                     <ul class="nav navbar-nav navbar-right">
                     <li>
                         <Dropdown id="dropdown-size-large" className="buttons">
@@ -119,4 +120,4 @@ function mapStateToProps(state) {
       auth: state
     };
   }
-export default connect(mapStateToProps, { logout })(Nav);
+export default connect(mapStateToProps, { logout, getQuery })(Nav);

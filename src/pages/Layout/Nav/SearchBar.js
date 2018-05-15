@@ -1,17 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, Redirect, Route } from 'react-router';
 import SearchResult from '../../SearchResult';
+import { connect } from 'react-redux';
+import { logout, getUser, getQuery } from '../../../actions/index';
 
-class SearchBar extends React.Component {
+  class SearchBar extends React.Component {
     constructor() {
         super();
         this.state = { term: '' }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     onInputChange(term) {
         this.setState({term});
-        this.props.onTermChange(term);
     }
+    handleClick(){
+ 
+        this.props.getQuery(this.state.term);
+    }
+ 
 
 
     render() {
@@ -21,14 +28,18 @@ class SearchBar extends React.Component {
             <div class="input-group search">
                 <input type="text" class="form-control" placeholder="Search for..." onChange={event => this.onInputChange(event.target.value)}/>
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <Link to="advertisements" query={{ query: this.state.term }}>
+                    <button class="btn btn-default" type="submit" onClick={this.handleClick} ><i class="glyphicon glyphicon-search"></i></button>
+                    </Link>
                 </div>
             </div>
             </form>
+          
         </div>
-        )
+        );
     }
-}
+  }
 
-export default SearchBar;
+
+export default connect(null, { getQuery })(SearchBar);
 

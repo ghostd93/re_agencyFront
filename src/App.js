@@ -14,6 +14,11 @@ import Advertisements from './pages/Advertisements';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+
+  }
 
 
   render() {
@@ -23,7 +28,7 @@ class App extends Component {
         <Route path="/" component={Layout}>
             <IndexRoute component={About} />
             <Route path="about" component={About}></Route>
-            <Route path="advertisements" component={Advertisements}></Route>
+            <Route path="advertisements"  component={Advertisements}></Route>
             <Route path="signIn" component={SignIn}></Route>
             <Route path="signUp" component={SignUp}></Route>
         </Route>

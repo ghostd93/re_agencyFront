@@ -1,6 +1,6 @@
 import axios from 'axios';
 import setAuthorizationToken from '../auth/setAuthToken';
-import { LOGON } from '../actions/types';
+import { LOGON, QUERY } from '../actions/types';
 
 const url = "http://127.0.0.1:8000/api/auth/";
 
@@ -23,6 +23,7 @@ export function loadState() {
         return undefined;
     }
 };
+
 
 export function saveState(state) {
     try {
@@ -96,6 +97,13 @@ export function signUp(credentials) {
             console.log("error",error.response.data.error);
             alert(error.response.data.error);
         })
+    }
+}
+
+export function getQuery(query){
+    return {
+        type: QUERY,
+        query
     }
 }
 
