@@ -13,13 +13,19 @@ import SearchBar from './Nav/SearchBar';
 
 class Nav extends React.Component{
     
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
+<<<<<<< HEAD
             query: '',
+=======
+            query: "",
+>>>>>>> 7a78f798defc14e389e594fada6fda31d9d258ce
             estates: []
         }
+
+
     }
 
     handleTermChange(term) {
@@ -30,11 +36,19 @@ class Nav extends React.Component{
         });
     }
 
+    handleChange = event => {
+        this.setState({
+          query: event
+        });
+      }
+
     componentDidMount() {
-  
+        console.log(this.props);
       }
     
-      
+      handleSubmit(){
+          this.props.handleQuery(this.state.query);
+      }
 
     handleClick(e){
         e.preventDefault();
@@ -58,7 +72,21 @@ class Nav extends React.Component{
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                     </ul>
+<<<<<<< HEAD
                     <SearchBar />
+=======
+                    <SearchBar onTermChange={this.handleTermChange} />
+                    <div class="col-sm-3 col-md-3">
+                    <form class="navbar-form" role="search">
+                    <div class="input-group search">
+                        <input type="text" class="form-control" placeholder="Search for query" onChange={event => this.handleChange(event.target.value)}/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" onClick={this.handleSubmit.bind(this)}></i></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+>>>>>>> 7a78f798defc14e389e594fada6fda31d9d258ce
                     <ul class="nav navbar-nav navbar-right">
                     <li>
                         <Dropdown id="dropdown-size-large" className="buttons">
