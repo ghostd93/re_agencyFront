@@ -12,10 +12,12 @@ export default class Advertisements extends React.Component {
             advertisements: []
             
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
         window.addEventListener('load', this.getAllAdv);
+        
      }
     
     getAllAdv(){
@@ -34,18 +36,25 @@ export default class Advertisements extends React.Component {
 
         });
     }
-
+    handleClick(){
+        console.log("propsy" + this.props);
+    }
       
+    componentWillReceiveProps(newProps){
+        if (this.state.query !== newProps.route.query) {
+            this.setState({query: newProps.route.query});
+          }
+
+    }
 
 
 
     render() {
-        if(this.state.query === ""){
-            // this.getAllAdv();
-        }
-        
+        console.log(this.props);
         return (
             <main className="row">
+            <div>Query:{this.props.route.query}</div>
+            
                     {
                         this.state.advertisements.map((advert) => {  
                             return(
