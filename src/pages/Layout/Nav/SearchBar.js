@@ -12,11 +12,9 @@ import { logout, getUser, getQuery } from '../../../actions/index';
     }
 
     onInputChange(term) {
-        console.log(this.props);
         this.setState({term});
     }
     handleClick(){
- 
         this.props.getQuery(this.state.term);
     }
  

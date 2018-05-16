@@ -11,26 +11,28 @@ class Advertisements extends React.Component {
         this.getAllAdv =  this.getAllAdv.bind(this);
         this.state = {
             query: this.props.auth.query,
-            advertisements: []
-            
+            advertisements: []      
         };
         this.handleQueryChange = this.handleQueryChange.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener('load', this.handleQueryChange);
+        window.addEventListener('load', this.handleQueryChange());
      }
 
-     componentDidUpdate(){
-         this.handleQueryChange();
+     componentDidUpdate(prevProps){
+        if(prevProps.auth.query !== this.props.auth.query) {
+            window.addEventListener('load', this.handleQueryChange());
+        }
+
      }
     
     getAllAdv(){
-        axios.get(url).then((response) => {
-            const ad  = response.data;
-            console.log(ad);
-            this.setState({advertisements: ad});
-      });
+        axios.get(url).then(res => {
+            const advertisements = res.data.data;
+            console.log(advertisements);
+            this.setState({ advertisements });
+        });
     }
 
     getImg(id){
@@ -43,10 +45,10 @@ class Advertisements extends React.Component {
     }
 
     handleQueryChange() {
-        if(this.state.query === ""){
+        if(this.props.auth.query == ""){
             this.getAllAdv();
         }else{
-            const url = `http://81.2.246.98:8000/api/search?query=${this.state.query}`;
+            const url = `http://81.2.246.98:8000/api/search?query=${this.props.auth.query}`;
             axios.get(url).then((response) => {
                 console.log(response.data);
                 this.setState({advertisements: response.data.data});
@@ -57,18 +59,15 @@ class Advertisements extends React.Component {
     }
 
       
-    componentWillReceiveProps(newProps){
-        if (this.state.query !== newProps.route.query) {
-            this.setState({query: newProps.route.query});
-          }
-
-    }
+    // componentWillReceiveProps(newProps){
+    //     window.addEventListener('load', this.handleQueryChange());
+    // }
 
 
 
     render() {
-        this.handleQueryChange
-        console.log(this.props.auth.query);
+
+        console.log("query:" + this.props.auth.query);
         return (
             <main className="row">
             <h1>{this.props.auth.query}</h1>

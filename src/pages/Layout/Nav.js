@@ -4,6 +4,7 @@ import { logout, getUser, getQuery } from '../../actions/index';
 import request from 'superagent';
 import { connect } from 'react-redux';
 import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
+
 import Profile from './Nav/Profile';
 import SignUp from '../SignUp';
 import SignIn from '../SignIn';

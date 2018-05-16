@@ -2,7 +2,11 @@
 
 }
 main{
-    min-height: 500px;
+    min-height: 900px;
+}
+footer {
+    background-color: rgb(238, 238, 238);
+    height: 300px;
 }
 
 .buttons{
