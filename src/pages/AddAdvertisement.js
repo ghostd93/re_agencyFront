@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Button, FormGroup, FormControl, ControlLabel, InputGroup } from "react-bootstrap";
 import { connect } from 'react-redux';
+import { hashHistory} from 'react-router';
 
 const  url = "http://81.2.246.98:8000/api/advertisement";
 
@@ -20,13 +21,14 @@ class AddAdvertisement extends React.Component {
     handleClick(){
         // console.log(this.state);
           axios.post(url, this.state).then(response =>{
-            console.log(response);
+            console.log(response.data.advertisement_id);
+
+            // hashHistory.push('about');
+            hashHistory.push({pathname: "addProperty", state: {id : response.data.advertisement_id} })
           })
           .catch(error => {
-            
             console.log(error);
-            alert(error.response);
-            
+            alert(error.response);       
         })
     }
     
@@ -40,7 +42,7 @@ class AddAdvertisement extends React.Component {
     render() {
         return (
             <main className="row">
-            <h1>Dodawanie ogłoszenia</h1>
+            <h1>Dodawanie ogłoszenia 1/2</h1>
               <form >
               <div className="col-md-8">
                 <FormGroup controlId="type" bsSize="xsmall">
