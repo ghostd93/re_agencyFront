@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "history": "^1.17.0",
+    "jwt-decode": "^2.2.0",
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-bootstrap-dropdown-menu": "^1.1.14",

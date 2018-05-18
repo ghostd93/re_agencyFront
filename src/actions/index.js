@@ -1,16 +1,9 @@
 import axios from 'axios';
+import decode  from "jwt-decode";
 import setAuthorizationToken from '../auth/setAuthToken';
 import { LOGON, QUERY } from '../actions/types';
 
-const url = "http://127.0.0.1:8000/api/auth/";
-
-// export function getUser(){
-//     return dispatch =>{
-//          if((localStorage.getItem('user')) && (localStorage.getItem('token'))){
-//             dispatch(logon(true,localStorage.getItem('user')));
-//          }
-//     }
-// }
+const url = "http://81.2.246.98:8000/api/auth/";
 
 export function loadState() {
     try{
@@ -39,21 +32,27 @@ export function signIn(credentials) {
         console.log(credentials);
        return axios.post(url + "login", credentials)
         .then((response) => {
-               if(response.status ===200){
+            console.log(response);
+               if(response.status === 200){
                 let { access_token } = response.data;
+                let decodedToken = decode(access_token);
                 console.log(access_token);
+                console.log(decodedToken);
                 localStorage.setItem('token', access_token);
                 console.log(localStorage.getItem('token'))
                 setAuthorizationToken(access_token);
 
                 let user = {
-                    username: credentials.email
+                    username: credentials.email,
+                    id: decodedToken.user_id,
+                    admin: decodedToken.user_roles[0].role_name === 'administrator' ? true : false
                 };
                 dispatch(logon(true,user));
                }
                
         })
         .catch(error => {
+            
             console.log("error",error);
             alert(error.response);
             dispatch(logon(false,{}))
@@ -80,15 +79,10 @@ export function signUp(credentials) {
         axios.post(url + "register", credentials)
         .then((response) => {
             console.log(response);
-            if(response.status === 200){
+            if(response.status === 201){
                 let { access_token } = response.data;
                 localStorage.setItem("token", access_token);
-                // dispatch(logon(success));
-                alert("success");
-                // this.setState({user:{
-                //     token: response.data.access_token,
-                //     expires_in: response.data.expires_in
-                // }})
+                alert(response.data.message);
                 console.log(response.data);
             }
             

@@ -15,7 +15,6 @@ import { signIn } from '../actions/index';
     handleClick(e){
         e.preventDefault();
           console.log(this.props);
-         
           this.props.signIn(this.state);
     }
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { signUp } from '../actions/index';
 
 
-export default class SesignUp extends React.Component{
+class SignUp extends React.Component{
     constructor(props) {
         super(props);
     
@@ -27,11 +29,10 @@ export default class SesignUp extends React.Component{
         event.preventDefault();
       }
 
-      handleClick(){
+      handleClick(e){
+        e.preventDefault();
         console.log(this.state);
-        let uri = 'http://127.0.0.1:8000/api/auth/register';
-          axios.post(uri, this.state).then((response) => {        
-        });
+        this.props.signUp(this.state);
         }
     
 
@@ -79,3 +80,4 @@ export default class SesignUp extends React.Component{
         );
     }
 }
+export default connect(null, { signUp })(SignUp);
