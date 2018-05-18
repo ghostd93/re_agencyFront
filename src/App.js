@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import About from './pages/About';
 import Advertisements from './pages/Advertisements';
+import AddAdvertisement from './pages/AddAdvertisement';
 
 
 
@@ -30,6 +31,7 @@ export default class App extends Component {
             <IndexRoute component={About} />
             <Route path="about" component={About}></Route>
             <Route path="advertisements"  component={Advertisements}></Route>
+            <Route path="addAdvertisement"  component={AddAdvertisement}></Route>
             <Route path="signIn" component={SignIn}></Route>
             <Route path="signUp" component={SignUp}></Route>
         </Route>

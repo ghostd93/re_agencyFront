@@ -5,6 +5,7 @@ const defaultState = {
         user: {
             username: "",
             admin: false,
+            id:""
             
         },
         isAuthenticated: false,
@@ -18,6 +19,8 @@ export default (state = defaultState, action = {}) =>{
                 ...state,
                 user: action.user,
                 isAuthenticated: action.success,
+                id: action.id,
+                admin: action.admin,
                 query: ""
             };
         case QUERY:
