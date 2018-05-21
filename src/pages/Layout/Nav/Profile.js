@@ -22,8 +22,9 @@ class Profile extends React.Component {
     return (
         <div>
         <MenuItem eventKey="1">1</MenuItem>
-        <MenuItem eventKey="1"><Link to="addAdvertisement">Dodaj ogłoszenie</Link></MenuItem>
-        <MenuItem eventKey="3">Something else here</MenuItem>    
+        <MenuItem eventKey="2"><Link to="addAdvertisement">Dodaj ogłoszenie</Link></MenuItem>
+        <MenuItem eventKey="3"><Link to="myAdvertisements">Moje ogłoszenia</Link></MenuItem>
+        <MenuItem eventKey="4">Something else here</MenuItem>    
         </div>
     );
   }
