@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
 
 import Profile from './Nav/Profile';
+import Admin from './Nav/Admin';
 import SignUp from '../SignUp';
 import SignIn from '../SignIn';
 import SearchBar from './Nav/SearchBar';
@@ -55,6 +56,7 @@ class Nav extends React.Component{
     render() {
         const  { isAuthenticated }   = this.props.auth;
         const  { username }   = this.props.auth.user;
+        const  { admin }   = this.props.auth.user;
         return (
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -67,21 +69,34 @@ class Nav extends React.Component{
                     <a class="navbar-brand" href="#">REagency</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                    </ul>
+                    
                     <SearchBar />
+                    
+                   
                     <ul class="nav navbar-nav navbar-right">
+                    <li>
+                       {admin ? 
+                            <Dropdown id="dropdown-size-large" className="buttons">
+                            <Dropdown.Toggle>
+                                Admin
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Admin />
+                            </Dropdown.Menu>
+                        </Dropdown> : ""
+                        }
+                    
+                    </li>
                     <li>
                         <Dropdown id="dropdown-size-large" className="buttons">
                             <Dropdown.Toggle>
                                 Browse
                             </Dropdown.Toggle>
-                        <Dropdown.Menu>
+                            <Dropdown.Menu>
                             <MenuItem eventKey="1"><Link to="about">About Us</Link></MenuItem>
                             <MenuItem eventKey="2"><Link to="advertisements">Real Estates</Link></MenuItem>
-                            
                             <MenuItem eventKey="3">Something else here</MenuItem>
-                        </Dropdown.Menu>
+                            </Dropdown.Menu>
                         </Dropdown>
                     </li>
                     <li>

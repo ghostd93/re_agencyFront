@@ -75,7 +75,7 @@ class Advertisements extends React.Component {
                     {
                         this.state.advertisements.map((advert) => {  
                             return(
-                                <Col className="card" xs={6} md={4} key={advert.id}>
+                                <Col className="card" xs={6} md={3} key={advert.id}>
                                     <img src={advert.photos[0].thumb_url} alt="" className="advPhoto"/>
                                     <div className="cardDesc">
                                         <p>Data dodania: {advert.date_of_announcement}</p>

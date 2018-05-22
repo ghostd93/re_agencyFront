@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Table, Button } from 'react-bootstrap';
 
 class MyAdvertisements extends React.Component{
 
@@ -29,13 +30,38 @@ class MyAdvertisements extends React.Component{
         return(
             <div className="row">
                 <h1>My advertisements</h1>
+                <Table hover responsive>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Date of announcement</th>
+                            <th>Price</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
                 {
                     this.state.avertisements.map(advert =>{
                         return(
-                            <div className="card" key={advert.id}>Advertisement id: {advert.id}</div>
+                            <tr key={advert.id}>
+                                <td>{advert.id}</td>
+                                <td>{advert.type}</td>
+                                <td>{advert.description}</td>
+                                <td>{advert.date_of_announcement}</td>
+                                <td>{advert.price}</td>
+                                <td><Button className="btn btn-success">Edit</Button></td>
+                                <td><Button className="btn btn-danger">Delete</Button></td>
+                            </tr>
+                            
                         )
                     })
                 }
+                    </tbody> 
+                </Table>
             </div>
         )
     }

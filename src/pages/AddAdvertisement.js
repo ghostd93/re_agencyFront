@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, FormGroup, FormControl, ControlLabel, InputGroup } from "react-bootstrap";
+import { Col, Row,Button, FormGroup, FormControl, ControlLabel, InputGroup } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { hashHistory} from 'react-router';
 
@@ -41,41 +41,61 @@ class AddAdvertisement extends React.Component {
 
     render() {
         return (
+            
             <main className="row">
             <h1>Dodawanie ogłoszenia 1/2</h1>
               <form >
-              <div className="col-md-8">
-                <FormGroup controlId="type" bsSize="xsmall">
-                <ControlLabel>Typ</ControlLabel>
-                    <FormControl componentClass="select" placeholder="sprzedaż wynajem"
-                    onChange={this.handleChange}
-                    >
-                        <option ></option>
-                        <option value="sprzedaz" >Sprzedaż</option>
-                        <option value="wynajem">Wynajem</option>
-                    </FormControl>
+                <Row>
+                    <Col md={4} xs={6}>
+                        <FormGroup controlId="type" bsSize="xsmall">
+                        <ControlLabel>Typ</ControlLabel>
+                            <FormControl componentClass="select" placeholder="sprzedaż wynajem"
+                            onChange={this.handleChange}
+                            >
+                                <option ></option>
+                                <option value="sprzedaz" >Sprzedaż</option>
+                                <option value="wynajem">Wynajem</option>
+                            </FormControl>
+                        </FormGroup>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4} xs={6}>
+                        <FormGroup controlId="description">
+                        <ControlLabel>Opis</ControlLabel>
+                        <FormControl componentClass="textarea" placeholder="Opis" 
+                        onChange={this.handleChange}
+                        />
                 </FormGroup>
-                <FormGroup controlId="description">
-                    <ControlLabel>Opis</ControlLabel>
-                    <FormControl componentClass="textarea" placeholder="Opis" 
-                    onChange={this.handleChange}
-                    />
-                </FormGroup>
-                </div>
-                <FormGroup controlId="price" className="col-md-4">
-                    <ControlLabel>Cena</ControlLabel>
-                    <InputGroup>
-                    <InputGroup.Addon>PLN</InputGroup.Addon>
-                    <FormControl type="number" step="0.01" 
-                    onChange={this.handleChange}
-                    />
-                    </InputGroup>
-                </FormGroup>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4} xs={6}>
+                        <FormGroup controlId="price" >
+                        <ControlLabel>Cena</ControlLabel>
+                        <InputGroup>
+                        <InputGroup.Addon>PLN</InputGroup.Addon>
+                        <FormControl type="number" step="0.01" 
+                        onChange={this.handleChange}
+                        />
+                        </InputGroup>
+                        </FormGroup>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4} xs={6}>
+
+                    <Button className="col-md-12"
+                    onClick={this.handleClick.bind(this)}
+                    >Submit</Button>
+                    </Col>
+                </Row>
+                
+      
+
                 
               </form>    
-              <Button className="btn col-md-4"
-                onClick={this.handleClick.bind(this)}
-                >OK</Button>
+              
             </main>
         )
     }

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
  
-class Profile extends React.Component {
+class Admin extends React.Component {
   constructor() {
     super();
     this.deleteAccount = this.deleteAccount.bind(this);
@@ -17,17 +17,15 @@ class Profile extends React.Component {
   logout(e) {
     console.log("Logging out")
   }
- 
+  
   render() {
     return (
-        <div style={{margin: '0 5px 5px 15px'}}>
-        <MenuItem eventKey="1">1</MenuItem>
-        <MenuItem eventKey="2"><Link to="addAdvertisement">Dodaj ogłoszenie</Link></MenuItem>
-        <MenuItem eventKey="3"><Link to="myAdvertisements">Moje ogłoszenia</Link></MenuItem>
-        <MenuItem eventKey="4">Something else here</MenuItem>    
+        <div style={{margin: '0 5px 0 15px'}}>
+            <MenuItem eventKey="1"><Link to="addAdvertisement">Advertisements</Link></MenuItem>
+            <MenuItem eventKey="2"><Link to="myAdvertisements">Users</Link></MenuItem>
         </div>
     );
   }
 }
  
-export default Profile;
+export default Admin;
