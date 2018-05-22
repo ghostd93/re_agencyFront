@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Row, Col, Button } from 'react-bootstrap';
 
 const  url = "http://81.2.246.98:8000/api/advertisement";
 
@@ -74,15 +75,16 @@ class Advertisements extends React.Component {
                     {
                         this.state.advertisements.map((advert) => {  
                             return(
-                                <div className="card" key={advert.id}>
+                                <Col className="card" xs={6} md={4} key={advert.id}>
                                     <img src={advert.photos[0].thumb_url} alt="" className="advPhoto"/>
                                     <div className="cardDesc">
                                         <p>Data dodania: {advert.date_of_announcement}</p>
                                         <p>Cena: {advert.price} zł</p>
                                         <p>Opis: {advert.description}</p>
                                         <p>Nieruchomość na {advert.type}</p>
+                                        <Button>Wiecej</Button>
                                     </div>
-                                </div>
+                                </Col>
                             )
                         })
                     }

@@ -47,6 +47,7 @@ class AddProperty extends React.Component {
 
     handleClick(){
          console.log(this.state);
+         this.uploadImgHandle();
           axios.post(`http://81.2.246.98:8000/api/advertisement/${this.props.location.state.id}/property`, this.state)
           .then(response =>{
             console.log(response);
