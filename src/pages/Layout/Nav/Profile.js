@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
+import {  MenuItem} from 'react-bootstrap';
  
 class Profile extends React.Component {
   constructor() {

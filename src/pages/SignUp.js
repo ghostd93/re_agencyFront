@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { signUp } from '../actions/index';
 

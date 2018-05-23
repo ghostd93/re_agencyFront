@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory} from 'react-router';
-import { logon } from './actions/index';
+
 
 
 import Layout from './pages/Layout';
@@ -17,11 +16,7 @@ import MyAdvertisements from './pages/MyAdvertisements';
 
 
 export default class App extends Component {
-  constructor(props){
-    super(props);
 
-
-  }
 
 
   render() {

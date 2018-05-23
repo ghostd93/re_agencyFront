@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
 import {loadState, saveState } from './actions/index';
 
-import Bootstrap from 'react-bootstrap';
 
 import reducer from './reducers';
 

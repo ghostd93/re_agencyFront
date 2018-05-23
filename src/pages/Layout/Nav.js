@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { logout, getUser, getQuery } from '../../actions/index';
-import request from 'superagent';
+import { logout, getQuery } from '../../actions/index';
 import { connect } from 'react-redux';
-import { DropdownMenu, MenuItem, DropdownButton, Glyphicon, Dropdown, Button} from 'react-bootstrap';
+import { MenuItem,  Glyphicon, Dropdown} from 'react-bootstrap';
 
 import Profile from './Nav/Profile';
 import Admin from './Nav/Admin';
@@ -11,7 +10,7 @@ import SignUp from '../SignUp';
 import SignIn from '../SignIn';
 import SearchBar from './Nav/SearchBar';
 
-
+import API from "../../Api"
 
 class Nav extends React.Component{
     
@@ -27,11 +26,10 @@ class Nav extends React.Component{
     }
 
     handleTermChange(term) {
-        const url = `http://81.2.246.98:8000/api/search?query=${term}`;
-        console.log("tutaj jest nav" + term);
-        request.get(url, function(err, res) {
-            console.log(res.body.data[0]);
+        API.get(`search?query=${term}`).then(response =>{
+            console.log(response.body.data[0]);
         });
+       
     }
 
     handleChange = event => {
@@ -58,22 +56,22 @@ class Nav extends React.Component{
         const  { username }   = this.props.auth.user;
         const  { admin }   = this.props.auth.user;
         return (
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+            <nav className="navbar navbar-default" role="navigation">
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">REagency</a>
+                    
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     
                     <SearchBar />
                     
                    
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul className="nav navbar-nav navbar-right">
                     <li>
                        {admin ? 
                             <Dropdown id="dropdown-size-large" className="buttons">
@@ -137,7 +135,7 @@ class Nav extends React.Component{
                     </li>
                     </ul>
                 </div>
-                </nav>
+            </nav>
         );
     }
 }

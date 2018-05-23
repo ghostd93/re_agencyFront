@@ -1,9 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { Row, Col, Button } from 'react-bootstrap';
+import {  Col, Button } from 'react-bootstrap';
 
-const  url = "http://81.2.246.98:8000/api/advertisement";
+import API from "../Api"
+
 
 
 class Advertisements extends React.Component {
@@ -29,7 +29,8 @@ class Advertisements extends React.Component {
      }
     
     getAllAdv(){
-        axios.get(url).then(res => {
+        API.get(`advertisement`)
+        .then(res => {
             const advertisements = res.data.data;
             console.log(advertisements);
             this.setState({ advertisements });
@@ -37,7 +38,8 @@ class Advertisements extends React.Component {
     }
 
     getImg(id){
-         axios.get(url + "/"+ id + "/image").then((response) =>{
+        API.get(`advertisement/${id}/image`)
+        .then((response) =>{
             var url2 = response.data.data[0].url;
             console.log("img1 " + url2);
             return url2;
@@ -46,11 +48,11 @@ class Advertisements extends React.Component {
     }
 
     handleQueryChange() {
-        if(this.props.auth.query == ""){
+        if(this.props.auth.query === ""){
             this.getAllAdv();
         }else{
-            const url = `http://81.2.246.98:8000/api/search?query=${this.props.auth.query}`;
-            axios.get(url).then((response) => {
+            API.get(`search?query=${this.props.auth.query}`)
+            .then((response) => {
                 console.log(response.data);
                 this.setState({advertisements: response.data.data});
             });

@@ -7,7 +7,7 @@ export default class About extends React.Component {
         return (
         <main>
             <h1>About us</h1>
-            <h3>Jesteśmy super agencją nieruchomości</h3>
+            <h3>Jesteśmy  agencją nieruchomości</h3>
         </main>
         )
     }

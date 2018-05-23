@@ -9,7 +9,7 @@ const defaultState = {
             
         },
         isAuthenticated: false,
-        query: "asdas"
+        query: ""
     }
     
 export default (state = defaultState, action = {}) =>{

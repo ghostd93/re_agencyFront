@@ -3,7 +3,7 @@ import decode  from "jwt-decode";
 import setAuthorizationToken from '../auth/setAuthToken';
 import { LOGON, QUERY } from '../actions/types';
 
-const url = "http://81.2.246.98:8000/api/auth/";
+const url = "https://reagency.tk/api/auth/";
 
 export function loadState() {
     try{

@@ -1,11 +1,9 @@
 import React from 'react';
-import axios from 'axios';
-import { Col, Row, Button, FormGroup, FormControl, ControlLabel, InputGroup } from "react-bootstrap";
+import { Col, Row, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { hashHistory} from 'react-router';
 
-const  urlP = "http://81.2.246.98:8000/api/advertisement/{id}/property";
-const  urlI = "http://81.2.246.98:8000/api/advertisement/{id}/image";
+import API from "../Api"
 
 
 class AddProperty extends React.Component {
@@ -32,30 +30,54 @@ class AddProperty extends React.Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
+    
 
     handleImageChange = event =>{
         this.setState({image: event.target.files[0]})
     }
 
     uploadImgHandler(){
-        const formData = new FormData()
-        formData.append('image', this.state.image, this.state.image.name)
-        axios.post(`http://81.2.246.98:8000/api/advertisement/${this.props.location.state.id}/image`, formData)
+        
     }
 
    
 
     handleClick(){
          console.log(this.state);
-         this.uploadImgHandler();
-          axios.post(`http://81.2.246.98:8000/api/advertisement/${this.props.location.state.id}/property`, this.state)
-          .then(response =>{
-            console.log(response);
+         let imgStatus;
+         let propetryStatus;
+
+         
+         const formData = new FormData()
+         if(this.state.image != null){
+            formData.append('image', this.state.image, this.state.image.name)
+         }
+        
+        API.post(`advertisement/${this.props.location.state.id}/image`, formData)
+        .then(response =>{
+            imgStatus = response.status;
+            console.log(response.status);
           })
           .catch(error => {   
             console.log(error);
         })
-        this.uploadImgHandle();
+
+
+         API.post(`advertisement/${this.props.location.state.id}/property`, this.state)
+          .then(response =>{
+            propetryStatus = response.status;
+            console.log(response.status);
+          })
+          .catch(error => {   
+            console.log(error);
+        })
+
+        console.log("hehe");
+        if(imgStatus === 201 && propetryStatus === 200){
+            console.log(imgStatus);
+            hashHistory.push({pathname: "myAdvertisements" })
+        }
+        
     }
         
     
@@ -67,7 +89,7 @@ class AddProperty extends React.Component {
   
 
     render() {
-        console.log(this.props.location);
+        // console.log(this.props.location);
         return (
             <main className="row">
             <h1>Dodawanie ogłoszenia 2/2</h1>
