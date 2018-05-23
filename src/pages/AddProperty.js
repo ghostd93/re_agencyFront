@@ -44,10 +44,7 @@ class AddProperty extends React.Component {
 
     handleClick(){
          console.log(this.state);
-         let imgStatus;
-         let propetryStatus;
-
-         
+   
          const formData = new FormData()
          if(this.state.image != null){
             formData.append('image', this.state.image, this.state.image.name)
@@ -55,7 +52,6 @@ class AddProperty extends React.Component {
         
         API.post(`advertisement/${this.props.location.state.id}/image`, formData)
         .then(response =>{
-            imgStatus = response.status;
             console.log(response.status);
           })
           .catch(error => {   
@@ -65,19 +61,15 @@ class AddProperty extends React.Component {
 
          API.post(`advertisement/${this.props.location.state.id}/property`, this.state)
           .then(response =>{
-            propetryStatus = response.status;
             console.log(response.status);
+            if(response.status ===  201){
+                hashHistory.push({pathname: "myAdvertisements" })
+            }
           })
           .catch(error => {   
             console.log(error);
         })
-
-        console.log("hehe");
-        if(imgStatus === 201 && propetryStatus === 200){
-            console.log(imgStatus);
-            hashHistory.push({pathname: "myAdvertisements" })
-        }
-        
+      
     }
         
     

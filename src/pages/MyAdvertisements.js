@@ -18,25 +18,19 @@ class MyAdvertisements extends React.Component{
         window.addEventListener('load', this.getMyAdvertisements());
     }
 
-    // componentDidUpdate(prevProps,prevState){
-    //     console.log("-----");
-    //     console.log(prevState.advertisements);
-    //     console.log("-----");
-    //     console.log(this.state.advertisements);
-    //     if(prevState.advertisements != this.state.advertisements) {
-    //         window.addEventListener('load', this.getMyAdvertisements());
-    //     }
-    // }
+ 
 
     deleteAd(id){
         console.log(id);
         API.delete(`advertisement/${id}`)
         .then(response =>{
             console.log(response);
+            this.getMyAdvertisements();
         })
         .catch(error => {
             console.log(error);
         })
+        
     }
     getMyAdvertisements(){
         let userId = this.props.auth.user.id;
@@ -44,7 +38,7 @@ class MyAdvertisements extends React.Component{
         .then(response =>{
             const advertisements = response.data.data;
             this.setState({ advertisements });
-            // console.log(response);
+            console.log(response);
         })
     }
 
@@ -52,6 +46,7 @@ class MyAdvertisements extends React.Component{
 
     render(){
         return(
+            
             <div className="row">
                 <h1>My advertisements</h1>
                 <Table hover responsive>

@@ -1,9 +1,10 @@
-import axios from 'axios';
 import decode  from "jwt-decode";
 import setAuthorizationToken from '../auth/setAuthToken';
 import { LOGON, QUERY } from '../actions/types';
+import { hashHistory} from 'react-router';
 
-const url = "https://reagency.tk/api/auth/";
+import API from "../Api"
+
 
 export function loadState() {
     try{
@@ -11,6 +12,8 @@ export function loadState() {
         if(serializedState === null){
             return undefined;
         }
+        const token = localStorage.getItem('token');
+        setAuthorizationToken(token);
         return JSON.parse(serializedState);
     }catch(error){
         return undefined;
@@ -30,7 +33,7 @@ export function saveState(state) {
 export function signIn(credentials) {
     return dispatch =>{
         console.log(credentials);
-       return axios.post(url + "login", credentials)
+       return API.post('auth/login',credentials)
         .then((response) => {
             console.log(response);
                if(response.status === 200){
@@ -49,7 +52,7 @@ export function signIn(credentials) {
                 };
                 dispatch(logon(true,user));
                }
-               
+               hashHistory.push({pathname: "myAdvertisements" })
         })
         .catch(error => {
             
@@ -62,7 +65,7 @@ export function signIn(credentials) {
 
 export function logout() {
     return dispatch => {
-        axios.post(url + "logout").then((response) =>{
+        API.post('auth/logout').then((response) =>{
             alert(response.data.message);
         }
     );
@@ -70,13 +73,14 @@ export function logout() {
       localStorage.removeItem('state');
       setAuthorizationToken(false);
       dispatch(logon(false,{}));
+      hashHistory.push({pathname: "about" })
     }
   }
 
 
 export function signUp(credentials) {
     return dispatch =>{
-        axios.post(url + "register", credentials)
+        API.post('auth/register',credentials)
         .then((response) => {
             console.log(response);
             if(response.status === 201){

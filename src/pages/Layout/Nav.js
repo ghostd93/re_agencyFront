@@ -58,6 +58,7 @@ class Nav extends React.Component{
         return (
             <nav className="navbar navbar-default" role="navigation">
                 <div className="navbar-header">
+                    <Link class="navbar-brand" to="about">REagency</Link>
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span className="sr-only">Toggle navigation</span>
                     <span className="icon-bar"></span>
