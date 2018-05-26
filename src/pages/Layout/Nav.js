@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { logout, getQuery } from '../../actions/index';
 import { connect } from 'react-redux';
-import { MenuItem,  Glyphicon, Dropdown} from 'react-bootstrap';
+import { Navbar,MenuItem,  Glyphicon, Dropdown} from 'react-bootstrap';
 
 import Profile from './Nav/Profile';
 import Admin from './Nav/Admin';
@@ -39,7 +39,7 @@ class Nav extends React.Component{
       }
 
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
       }
     
       handleSubmit(){
@@ -56,18 +56,14 @@ class Nav extends React.Component{
         const  { username }   = this.props.auth.user;
         const  { admin }   = this.props.auth.user;
         return (
-            <nav className="navbar navbar-default" role="navigation">
-                <div className="navbar-header">
-                    <Link class="navbar-brand" to="about">REagency</Link>
-                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    </button>
-                    
-                </div>
-                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <Navbar  collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <Link to="about">REagency</Link>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
                     
                     <SearchBar />
                     
@@ -135,8 +131,8 @@ class Nav extends React.Component{
                     )}
                     </li>
                     </ul>
-                </div>
-            </nav>
+                </Navbar.Collapse>
+            </Navbar>
         );
     }
 }

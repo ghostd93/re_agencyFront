@@ -1,6 +1,6 @@
 import decode  from "jwt-decode";
 import setAuthorizationToken from '../auth/setAuthToken';
-import { LOGON, QUERY } from '../actions/types';
+import { LOGON, QUERY, PAGE } from '../actions/types';
 import { hashHistory} from 'react-router';
 
 import API from "../Api"
@@ -29,6 +29,17 @@ export function saveState(state) {
 
     }
 };
+export function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 export function signIn(credentials) {
     return dispatch =>{
@@ -102,6 +113,13 @@ export function getQuery(query){
     return {
         type: QUERY,
         query
+    }
+}
+
+export function getPage(page){
+    return {
+        type: PAGE,
+        page
     }
 }
 

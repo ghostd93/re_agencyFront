@@ -21,9 +21,9 @@ class Profile extends React.Component {
   render() {
     return (
         <div style={{margin: '0 5px 5px 15px'}}>
-        <MenuItem eventKey="1">1</MenuItem>
-        <MenuItem eventKey="2"><Link to="addAdvertisement">Dodaj ogłoszenie</Link></MenuItem>
-        <MenuItem eventKey="3"><Link to="myAdvertisements">Moje ogłoszenia</Link></MenuItem>
+        <MenuItem eventKey="1"><Link to="PersonalDetails">Personal Details</Link></MenuItem>
+        <MenuItem eventKey="2"><Link to="addAdvertisement">Add advertisement</Link></MenuItem>
+        <MenuItem eventKey="3"><Link to="myAdvertisements">My advertisement</Link></MenuItem>
         <MenuItem eventKey="4">Something else here</MenuItem>    
         </div>
     );

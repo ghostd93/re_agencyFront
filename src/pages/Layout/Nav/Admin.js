@@ -21,8 +21,8 @@ class Admin extends React.Component {
   render() {
     return (
         <div style={{margin: '0 5px 0 15px'}}>
-            <MenuItem eventKey="1"><Link to="addAdvertisement">Advertisements</Link></MenuItem>
-            <MenuItem eventKey="2"><Link to="myAdvertisements">Users</Link></MenuItem>
+            <MenuItem eventKey="1"><Link to="advertisementVeryfication">Advertisements</Link></MenuItem>
+            <MenuItem eventKey="2"><Link to="users">Users</Link></MenuItem>
         </div>
     );
   }

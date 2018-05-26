@@ -2,39 +2,57 @@ import React from 'react';
 import { Col, Row,Button, FormGroup, FormControl, ControlLabel, InputGroup } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { hashHistory} from 'react-router';
-import { formatDate } from '../actions/index';
+
 
 
 import API from "../Api"
 
 
 
-class AddAdvertisement extends React.Component {
+class EditAdvertisement extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             type: "",
-            date_of_announcement: new Date().toLocaleDateString().toString(),
             description:"",
-            price: ""    
+            price: "",     
+            disabled: true 
         };
     }
+    componentDidMount(){
+        window.addEventListener('load', this.getAdvertisements());
+    }
 
-    handleClick(){
-        // console.log(this.state);
-            API.post('advertisement', this.state)
+    updateAdvertisement(){
+            console.log(this.state);
+            API.patch(`advertisement/${this.props.location.query.advert_id}`, this.state)
             .then(response =>{
-            console.log(response.data.advertisement_id);
-            if(response.status === 201){
-                hashHistory.push({pathname: "addProperty", state: {id : response.data.advertisement_id} })
-            }
-            // hashHistory.push('about');
-            
+            console.log(response);
+            this.setState({disabled: true});
           })
           .catch(error => {
             console.log(error);
             alert(error);       
         })
+    }
+    getAdvertisements(){
+        API.get(`advertisement/${this.props.location.query.advert_id}`)
+        .then(response =>{
+            const advertisement = response.data.data;
+            this.setState({
+                type: advertisement.type,
+                description: advertisement.description,
+                price: advertisement.price
+            })
+        })
+        .catch(error => {
+            console.log(error);
+            alert(error.response);       
+        })
+    }
+    isDisabled(){
+         this.state.disabled == true ? this.setState({disabled: false }): this.setState({disabled: true });
+         console.log(this.state.disabled);
     }
     
       handleChange = event => {
@@ -48,14 +66,16 @@ class AddAdvertisement extends React.Component {
         return (
             
             <main className="row">
-            <h1>Dodawanie ogłoszenia 1/2</h1>
+            <h1> Edit Advertisement id:{this.props.location.query.advert_id}</h1>
               <form >
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="type" bsSize="xsmall">
                         <ControlLabel>Typ</ControlLabel>
                             <FormControl componentClass="select" placeholder="sprzedaż wynajem"
+                            value={this.state.type}
                             onChange={this.handleChange}
+                            disabled={this.state.disabled}
                             >
                                 <option ></option>
                                 <option value="sprzedaz" >Sprzedaż</option>
@@ -71,7 +91,9 @@ class AddAdvertisement extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>PLN</InputGroup.Addon>
                         <FormControl type="number" step="0.01" 
+                        value={this.state.price}
                         onChange={this.handleChange}
+                        disabled={this.state.disabled}
                         />
                         </InputGroup>
                         </FormGroup>
@@ -81,19 +103,33 @@ class AddAdvertisement extends React.Component {
                     <Col md={6} xs={10}>
                         <FormGroup controlId="description">
                         <ControlLabel>Opis</ControlLabel>
-                        <FormControl componentClass="textarea" placeholder="Opis" 
+                        <FormControl componentClass="textarea" placeholder="Opis"           
                         onChange={this.handleChange}
+                        disabled={this.state.disabled}
+                        value={this.state.description}
                         />
                 </FormGroup>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={6} xs={10}>
+                {this.state.disabled == false ?
+                    <Col md={3} xs={10}>
                     <Button className="col-md-12"
-                    onClick={this.handleClick.bind(this)}
+                    onClick={() => this.updateAdvertisement()}
                     >Submit</Button>
                     </Col>
+                    :
+                    <Col md={3} xs={10}>
+                    <Button className="col-md-12"
+                    onClick={() => this.isDisabled()}
+                    >edit</Button>
+                    </Col>
+                }
                 </Row>
+                
+      
+
+                
               </form>    
               
             </main>
@@ -107,4 +143,4 @@ function mapStateToProps(state) {
     };
   }
 
-  export default connect(mapStateToProps )(AddAdvertisement);
+  export default connect(mapStateToProps )(EditAdvertisement);

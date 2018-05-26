@@ -1,5 +1,5 @@
 
-import { LOGON, QUERY } from '../actions/types';
+import { LOGON, QUERY, PAGE } from '../actions/types';
 
 const defaultState = {  
         user: {
@@ -9,7 +9,8 @@ const defaultState = {
             
         },
         isAuthenticated: false,
-        query: ""
+        query: "",
+        page: 1
     }
     
 export default (state = defaultState, action = {}) =>{
@@ -19,14 +20,19 @@ export default (state = defaultState, action = {}) =>{
                 ...state,
                 user: action.user,
                 isAuthenticated: action.success,
-                id: action.id,
                 admin: action.admin,
-                query: ""
+                query: "",
+                page: 1
             };
         case QUERY:
             return {
                 ...state,
                 query: action.query
+            };
+        case PAGE:
+            return {
+                ...state,
+                page: action.page
             };
         default:
             return state;
