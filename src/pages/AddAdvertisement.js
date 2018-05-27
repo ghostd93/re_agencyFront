@@ -48,18 +48,18 @@ class AddAdvertisement extends React.Component {
         return (
             
             <main className="row">
-            <h1>Dodawanie ogłoszenia 1/2</h1>
+            <h1>Advertisement 1/2</h1>
               <form >
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="type" bsSize="xsmall">
-                        <ControlLabel>Typ</ControlLabel>
-                            <FormControl componentClass="select" placeholder="sprzedaż wynajem"
+                        <ControlLabel>Type</ControlLabel>
+                            <FormControl componentClass="select"
                             onChange={this.handleChange}
                             >
                                 <option ></option>
-                                <option value="sprzedaz" >Sprzedaż</option>
-                                <option value="wynajem">Wynajem</option>
+                                <option value="sale" >Sale</option>
+                                <option value="rent">Rent</option>
                             </FormControl>
                         </FormGroup>
                     </Col>
@@ -67,9 +67,9 @@ class AddAdvertisement extends React.Component {
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="price" >
-                        <ControlLabel>Cena</ControlLabel>
+                        <ControlLabel>Price</ControlLabel>
                         <InputGroup>
-                        <InputGroup.Addon>PLN</InputGroup.Addon>
+                        <InputGroup.Addon>$</InputGroup.Addon>
                         <FormControl type="number" step="0.01" 
                         onChange={this.handleChange}
                         />
@@ -80,8 +80,8 @@ class AddAdvertisement extends React.Component {
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="description">
-                        <ControlLabel>Opis</ControlLabel>
-                        <FormControl componentClass="textarea" placeholder="Opis" 
+                        <ControlLabel>Description</ControlLabel>
+                        <FormControl componentClass="textarea" placeholder="description" 
                         onChange={this.handleChange}
                         />
                 </FormGroup>

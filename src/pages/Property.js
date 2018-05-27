@@ -77,29 +77,25 @@ class Property extends React.Component {
             <Row>
                 <PageHeader>Property id:{this.props.location.query.id}</PageHeader>
                 <Row>
-                <Col>
+                <Col mdOffset={1} xsOffset={1} >
                    <h3> {this.state.advertisement.description}</h3>
                 </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col md={12}  xs={12}>
                       <Carousel>
                         {
                             this.state.photos.map((photo)=>{
                                 return(
                                     <Carousel.Item>
-                                    <Image responsive src={photo.url} />
-                                    <Carousel.Caption>
-                                        <h3>hehe</h3>
-                                        <p>haha</p>
-                                    </Carousel.Caption>
+                                    <Image className="propertyPhoto" src={photo.url} />
                                     </Carousel.Item>
                                 )
                             })
                         }
                       </Carousel>
                     </Col>
-                    <Col>
+                    <Col mdOffset={1} xsOffset={1}  md={11}>
                         <p>{this.state.property.description}</p>
                     </Col>
                 </Row>
@@ -149,7 +145,7 @@ class Property extends React.Component {
                                 <td>{this.state.property.floor}</td>
                             </tr>
                             <tr>
-                                <td>Farage</td>
+                                <td>Garage</td>
                                 <td>{this.state.property.garage}</td>
                             </tr>
                             <tr>

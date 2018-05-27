@@ -59,8 +59,7 @@ class PersonalDetails extends React.Component {
             console.log(this.state.user);
         })
         .catch(error => {
-            console.log(error);
-            alert(error.response);       
+            console.log(error);   
         })
     }
     isDisabled(){

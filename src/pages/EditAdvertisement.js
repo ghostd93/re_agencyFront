@@ -78,8 +78,8 @@ class EditAdvertisement extends React.Component {
                             disabled={this.state.disabled}
                             >
                                 <option ></option>
-                                <option value="sprzedaz" >Sprzedaż</option>
-                                <option value="wynajem">Wynajem</option>
+                                <option value="sale" >Sale</option>
+                                <option value="rent">Rent</option>
                             </FormControl>
                         </FormGroup>
                     </Col>
@@ -87,9 +87,9 @@ class EditAdvertisement extends React.Component {
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="price" >
-                        <ControlLabel>Cena</ControlLabel>
+                        <ControlLabel>Price</ControlLabel>
                         <InputGroup>
-                        <InputGroup.Addon>PLN</InputGroup.Addon>
+                        <InputGroup.Addon>$</InputGroup.Addon>
                         <FormControl type="number" step="0.01" 
                         value={this.state.price}
                         onChange={this.handleChange}
@@ -102,7 +102,7 @@ class EditAdvertisement extends React.Component {
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="description">
-                        <ControlLabel>Opis</ControlLabel>
+                        <ControlLabel>Description</ControlLabel>
                         <FormControl componentClass="textarea" placeholder="Opis"           
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -122,7 +122,7 @@ class EditAdvertisement extends React.Component {
                     <Col md={3} xs={10}>
                     <Button className="col-md-12"
                     onClick={() => this.isDisabled()}
-                    >edit</Button>
+                    >Edit</Button>
                     </Col>
                 }
                 </Row>

@@ -100,17 +100,17 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="property_type" bsSize="xsmall">
-                        <ControlLabel>Typ nieruchomości</ControlLabel>
+                        <ControlLabel>Type</ControlLabel>
                             <FormControl componentClass="select" 
                             onChange={this.handleChange}
                             disabled={this.state.disabled}
                             value={this.state.property.property_type}
                             >
                                 <option ></option>
-                                <option value="mieszkanie" >Mieszkanie</option>
-                                <option value="dom">Dom</option>
-                                <option value="lokal">Lokal</option>
-                                <option value="dzialka">Działka</option>
+                                <option value="Flat" >Flat</option>
+                                <option value="House">House</option>
+                                <option value="Premises">Premises</option>
+                                <option value="Building land">Building land</option>
                             </FormControl>
                         </FormGroup>
                     </Col>
@@ -119,7 +119,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="date_of_registration">
-                        <ControlLabel>date_of_registration</ControlLabel>
+                        <ControlLabel>Date of registration</ControlLabel>
                         <FormControl type="date"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -129,7 +129,7 @@ class EditProperty extends React.Component {
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="property_area">
-                        <ControlLabel>property_area</ControlLabel>
+                        <ControlLabel>Property_area</ControlLabel>
                         <FormControl type="number" 
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -141,7 +141,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="date_of_construction">
-                        <ControlLabel>date_of_construction</ControlLabel>
+                        <ControlLabel>Date of construction</ControlLabel>
                         <FormControl type="date"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -151,7 +151,7 @@ class EditProperty extends React.Component {
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="number_of_floors">
-                        <ControlLabel>number_of_floors</ControlLabel>
+                        <ControlLabel>Number of floors</ControlLabel>
                         <FormControl type="number" 
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -163,7 +163,7 @@ class EditProperty extends React.Component {
                 <Row>
                         <Col md={4} xs={6}>
                         <FormGroup controlId="number_of_rooms">
-                        <ControlLabel>number_of_rooms</ControlLabel>
+                        <ControlLabel>Number of rooms</ControlLabel>
                         <FormControl type="number" 
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -173,7 +173,7 @@ class EditProperty extends React.Component {
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="floor">
-                        <ControlLabel>number_of_rooms</ControlLabel>
+                        <ControlLabel>Floor</ControlLabel>
                         <FormControl type="number"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -185,7 +185,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="balcony">
-                        <ControlLabel>balcony</ControlLabel>
+                        <ControlLabel>Balcony</ControlLabel>
                         <FormControl type="number"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -195,7 +195,7 @@ class EditProperty extends React.Component {
                     </Col>
                         <Col md={4} xs={6}>
                         <FormGroup controlId="garage">
-                        <ControlLabel>number_of_rooms</ControlLabel>
+                        <ControlLabel>Garage</ControlLabel>
                         <FormControl type="number"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -207,7 +207,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="land_area">
-                        <ControlLabel>number_of_rooms</ControlLabel>
+                        <ControlLabel>Land area</ControlLabel>
                         <FormControl type="number" 
                         disabled={this.state.disabled}
                         value={this.state.property.land_area}
@@ -216,7 +216,7 @@ class EditProperty extends React.Component {
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="country">
-                        <ControlLabel>Panstwo</ControlLabel>
+                        <ControlLabel>Country</ControlLabel>
                         <FormControl type="text"  
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -228,7 +228,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="city">
-                        <ControlLabel>Miasto</ControlLabel>
+                        <ControlLabel>City</ControlLabel>
                         <FormControl type="text"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -238,7 +238,7 @@ class EditProperty extends React.Component {
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="street">
-                        <ControlLabel>Ulica</ControlLabel>
+                        <ControlLabel>Street</ControlLabel>
                         <FormControl type="text"
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -250,7 +250,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="street_number">
-                        <ControlLabel>Adres</ControlLabel>
+                        <ControlLabel>Street number</ControlLabel>
                         <FormControl type="text" 
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -260,7 +260,7 @@ class EditProperty extends React.Component {
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="postal_code">
-                        <ControlLabel>Kod pocztowy</ControlLabel>
+                        <ControlLabel>Postal code</ControlLabel>
                         <FormControl type="text" 
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
@@ -272,7 +272,7 @@ class EditProperty extends React.Component {
                 <Row>
                     <Col md={8} xs={12}>
                         <FormGroup controlId="description">
-                        <ControlLabel>description</ControlLabel>
+                        <ControlLabel>Description</ControlLabel>
                         <FormControl type="text" 
                         onChange={this.handleChange}
                         disabled={this.state.disabled}

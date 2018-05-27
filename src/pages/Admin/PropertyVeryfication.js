@@ -50,17 +50,18 @@ class PropertyVeryfication extends React.Component {
     }
     reject(id){
         console.log(id);
-        let status = { status : 2, admin_notes : this.state.note };
-        console.log(status);
-        API.post(`admin/${id}/verificate`, status)
-        
-        .then(response =>{
-            console.log(response);
-            hashHistory.push({pathname: "advertisementVeryfication" })
-        })
-        .catch(error => {
-            console.log(error);
-        })   
+        if(this.state.note != ""){
+            let status = { status : 2, admin_notes : this.state.note };
+            console.log(status);
+            API.post(`admin/${id}/verificate`, status)
+            .then(response =>{
+                console.log(response);
+                hashHistory.push({pathname: "advertisementVeryfication" })
+            })
+            .catch(error => {
+                console.log(error);
+            }) 
+        }
     }
 
     handleChange = event => {
@@ -86,10 +87,6 @@ class PropertyVeryfication extends React.Component {
                                 return(
                                     <Carousel.Item>
                                     <Image responsive src={photo.url} />
-                                    <Carousel.Caption>
-                                        <h3>hehe</h3>
-                                        <p>haha</p>
-                                    </Carousel.Caption>
                                     </Carousel.Item>
                                 )
                             })

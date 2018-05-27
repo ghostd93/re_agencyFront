@@ -56,6 +56,7 @@ class EditImages extends React.Component {
                 formData.append('image', img, img.name) ;
                 API.post(`advertisement/${this.props.location.query.advert_id}/image`, formData)
                 .then(response =>{
+                    this.resetForm();
                     console.log(response.status);
                     this.getImg();
                   })
@@ -66,6 +67,7 @@ class EditImages extends React.Component {
             })  
          }
     }
+
     deleteImg(id){
         API.delete(`advertisement/${this.props.location.query.advert_id}/image/${id}`).
         then(res =>{
@@ -74,7 +76,9 @@ class EditImages extends React.Component {
         }) 
         this.getImg();
     }
-        
+    resetForm = () => { 
+        this.myFormRef.reset();
+      }
 
     render() {
         return (
@@ -82,12 +86,14 @@ class EditImages extends React.Component {
             <h1>Images</h1>
             <Row>
             <Col md={4} xs={6}>
+              <form ref={(el) => this.myFormRef = el}>
                 <FormGroup controlId="image">
                 <ControlLabel>Add Images</ControlLabel>
                 <FormControl type="file" placeholder="image" 
                 onChange={this.handleImageChange}
                 multiple/>
                 </FormGroup>
+              </form>
             </Col>
             <Col md={4} xs={6}>
                 <Button className="col-md-4"

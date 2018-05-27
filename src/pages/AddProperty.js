@@ -46,14 +46,8 @@ class AddProperty extends React.Component {
     }
 
 
-   
-
-    handleClick(){
-         console.log(this.state);
-   
-         
-         if(this.state.image != null){
-            
+    imgUpload(){
+        if(this.state.image != null){  
             this.state.image.map(img =>{
                 const formData = new FormData()
                 console.log(img);
@@ -61,24 +55,29 @@ class AddProperty extends React.Component {
                 API.post(`advertisement/${this.props.location.state.id}/image`, formData)
                 .then(response =>{
                     console.log(response.status);
+                    if(response.status ===  200){
+                        hashHistory.push({pathname: "myAdvertisements" })
+                    }
                   })
                   .catch(error => {   
                     console.log(error);
                 })
             })  
          }
-        
+    }
 
-
+    handleClick(){
+        //  console.log(this.state);
          API.post(`advertisement/${this.props.location.state.id}/property`, this.state)
           .then(response =>{
             console.log(response.status);
             if(response.status ===  201){
-                hashHistory.push({pathname: "myAdvertisements" })
+                this.imgUpload();
             }
           })
           .catch(error => {   
-            console.log(error);
+            const err = error.response.message;
+            console.log(err);
         })
       
     }
@@ -95,15 +94,15 @@ class AddProperty extends React.Component {
         // console.log(this.props.location);
         return (
             <main className="row">
-            <h1>Dodawanie ogłoszenia 2/2</h1>
-            <h2>ID ogłoszenia: {this.props.location.state.id}</h2>
+            <h1>Advertisement 2/2</h1>
+            <h2>Advertisement ID : {this.props.location.state.id}</h2>
 
               <form >
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="property_type" bsSize="xsmall">
-                        <ControlLabel>Typ nieruchomości</ControlLabel>
-                            <FormControl componentClass="select" placeholder="typ nieruchomości"
+                        <ControlLabel>Property type</ControlLabel>
+                            <FormControl componentClass="select"
                             onChange={this.handleChange}
                             >
                                 <option ></option>
@@ -119,16 +118,16 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="date_of_registration">
-                        <ControlLabel>date_of_registration</ControlLabel>
-                        <FormControl type="date" placeholder="date_of_registration" 
+                        <ControlLabel>Date of registration</ControlLabel>
+                        <FormControl type="date" placeholder="Date of registration" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="property_area">
-                        <ControlLabel>property_area</ControlLabel>
-                        <FormControl type="number" placeholder="property_area" 
+                        <ControlLabel>Property area</ControlLabel>
+                        <FormControl type="number" placeholder="Property area" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -137,16 +136,16 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="date_of_construction">
-                        <ControlLabel>date_of_construction</ControlLabel>
-                        <FormControl type="date" placeholder="date_of_construction" 
+                        <ControlLabel>Date of construction</ControlLabel>
+                        <FormControl type="date" placeholder="Date of construction" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="number_of_floors">
-                        <ControlLabel>number_of_floors</ControlLabel>
-                        <FormControl type="number" placeholder="number_of_floors" 
+                        <ControlLabel>Number of floors</ControlLabel>
+                        <FormControl type="number" placeholder="Number of floors" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -155,16 +154,16 @@ class AddProperty extends React.Component {
                 <Row>
                         <Col md={4} xs={6}>
                         <FormGroup controlId="number_of_rooms">
-                        <ControlLabel>number_of_rooms</ControlLabel>
-                        <FormControl type="number" placeholder="number_of_rooms" 
+                        <ControlLabel>Number of rooms</ControlLabel>
+                        <FormControl type="number" placeholder="Number of rooms" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="floor">
-                        <ControlLabel>number_of_rooms</ControlLabel>
-                        <FormControl type="number" placeholder="floor" 
+                        <ControlLabel>Floor</ControlLabel>
+                        <FormControl type="number" placeholder="Floor" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -173,16 +172,16 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="balcony">
-                        <ControlLabel>balcony</ControlLabel>
-                        <FormControl type="number" placeholder="balcony" 
+                        <ControlLabel>Balcony</ControlLabel>
+                        <FormControl type="number" placeholder="Balcony" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                         <Col md={4} xs={6}>
                         <FormGroup controlId="garage">
-                        <ControlLabel>number_of_rooms</ControlLabel>
-                        <FormControl type="number" placeholder="garage" 
+                        <ControlLabel>Garage</ControlLabel>
+                        <FormControl type="number" placeholder="Garage" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -191,16 +190,16 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="land_area">
-                        <ControlLabel>number_of_rooms</ControlLabel>
-                        <FormControl type="number" placeholder="land_area" 
+                        <ControlLabel>Land area</ControlLabel>
+                        <FormControl type="number" placeholder="Land area" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="country">
-                        <ControlLabel>Panstwo</ControlLabel>
-                        <FormControl type="text" placeholder="panstwo" 
+                        <ControlLabel>Country</ControlLabel>
+                        <FormControl type="text" placeholder="Country" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -209,16 +208,16 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="city">
-                        <ControlLabel>Miasto</ControlLabel>
-                        <FormControl type="text" placeholder="miasto" 
+                        <ControlLabel>City</ControlLabel>
+                        <FormControl type="text" placeholder="City" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="street">
-                        <ControlLabel>Ulica</ControlLabel>
-                        <FormControl type="text" placeholder="ulica" 
+                        <ControlLabel>Street</ControlLabel>
+                        <FormControl type="text" placeholder="Street" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -227,16 +226,16 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="street_number">
-                        <ControlLabel>Adres</ControlLabel>
-                        <FormControl type="text" placeholder="street_number" 
+                        <ControlLabel>Street number</ControlLabel>
+                        <FormControl type="text" placeholder="Street number" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="postal_code">
-                        <ControlLabel>Kod pocztowy</ControlLabel>
-                        <FormControl type="text" placeholder="kod pocztowy" 
+                        <ControlLabel>Postal code</ControlLabel>
+                        <FormControl type="text" placeholder="Postal code" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -245,8 +244,8 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={8} xs={12}>
                         <FormGroup controlId="description">
-                        <ControlLabel>description</ControlLabel>
-                        <FormControl type="text" placeholder="description" 
+                        <ControlLabel>Description</ControlLabel>
+                        <FormControl type="text" placeholder="Description" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -255,7 +254,7 @@ class AddProperty extends React.Component {
                 <Row>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="image">
-                        <ControlLabel>Zdjęcie</ControlLabel>
+                        <ControlLabel>Image</ControlLabel>
                         <FormControl type="file" placeholder="image" 
                         onChange={this.handleImageChange}
                         multiple/>
@@ -269,26 +268,10 @@ class AddProperty extends React.Component {
                     >Submit</Button>
                     </Col>
                 </Row>
-                
-                
-               
-               
-                
-                
-
-                
-               
-                
-                
-
-             
-              
-                
-                
-                
-
               </form>    
-             
+                <Row>
+                    <Col>{this.state.error}</Col>
+                </Row>
             </main>
         )
     }
