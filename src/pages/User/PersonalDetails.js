@@ -12,7 +12,6 @@ class PersonalDetails extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            user : {
                 name:"",
                 surname:"",
                 phone_number:"",
@@ -21,15 +20,14 @@ class PersonalDetails extends React.Component {
                 street:"", 
                 street_number:"",
                 postal_code:"",
-            },
-           
+            empty: false,
             disabled: true
         };
     }
     updatePersonalDetails(){
-        console.log(`user/${this.props.auth.user.id}/personaldata`);
-        console.log(this.state);
-            API.patch(`user/${this.props.auth.user.id}/personaldata`, this.state.user)
+        if(this.state.empty){
+            console.log(this.state);
+            API.post(`user/${this.props.auth.user.id}/personaldata`, this.state)
             .then(response =>{
             console.log(response);
             this.setState({disabled: true});
@@ -38,11 +36,25 @@ class PersonalDetails extends React.Component {
             console.log(error);
             alert(error);       
         })
+        }else{
+            console.log(`user/${this.props.auth.user.id}/personaldata`);
+            console.log(this.state);
+            API.patch(`user/${this.props.auth.user.id}/personaldata`, this.state)
+                .then(response =>{
+                console.log(response);
+                this.setState({disabled: true});
+              })
+              .catch(error => {
+                console.log(error);
+                alert(error);       
+            })
+        }
+       
     }
     
     handleChange = event => {
         this.setState({
-            user:{[event.target.id]: event.target.value}
+            [event.target.id]: event.target.value
             });
     }
 
@@ -54,12 +66,24 @@ class PersonalDetails extends React.Component {
     getPersonalDetails(){
         API.get(`user/${this.props.auth.user.id}/personaldata`)
         .then(response =>{
+            console.log(response);
             const user = response.data.data;
-            this.setState({user})
+            this.setState({
+                name: user.name,
+                surname:user.surname,
+                phone_number:user.phone_number,
+                country:user.country,
+                city:user.city,
+                street:user.street, 
+                street_number:user.street_number,
+                postal_code:user.postal_code
+
+            })
             console.log(this.state.user);
         })
         .catch(error => {
-            console.log(error);   
+            this.setState({empty: true});
+            console.log(error.statusCode);   
         })
     }
     isDisabled(){
@@ -73,14 +97,14 @@ class PersonalDetails extends React.Component {
             
             <main className="row">
             <h1>Personal Details</h1>
-              <form >
+              <form>
                 <Row>
                     <Col md={6} xs={10}>
                         <FormGroup controlId="name" >
                         <InputGroup>
                         <InputGroup.Addon>Name</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.name}
+                        value={this.state.name}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />
@@ -94,7 +118,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>Surname</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.surname}
+                        value={this.state.surname}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         editable 
@@ -110,7 +134,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup.Addon>Country</InputGroup.Addon>
                         
                         <FormControl type="text"
-                        value={this.state.user.country}
+                        value={this.state.country}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />
@@ -124,7 +148,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>City</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.city}
+                        value={this.state.city}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />
@@ -138,7 +162,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>Street</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.street}
+                        value={this.state.street}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />
@@ -152,7 +176,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>Street number</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.street_number}
+                        value={this.state.street_number}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />
@@ -166,7 +190,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>Postal code</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.postal_code}
+                        value={this.state.postal_code}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />
@@ -180,7 +204,7 @@ class PersonalDetails extends React.Component {
                         <InputGroup>
                         <InputGroup.Addon>Phone number</InputGroup.Addon>
                         <FormControl type="text"
-                        value={this.state.user.street_number}
+                        value={this.state.phone_number}
                         onChange={this.handleChange}
                         disabled={this.state.disabled}
                         />

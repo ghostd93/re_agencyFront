@@ -60,6 +60,9 @@ class EditAdvertisement extends React.Component {
           [event.target.id]: event.target.value
         });
       }
+      back(){
+        hashHistory.push({pathname: "myAdvertisements"});
+      }
   
 
     render() {
@@ -125,6 +128,11 @@ class EditAdvertisement extends React.Component {
                     >Edit</Button>
                     </Col>
                 }
+                <Col md={3} xs={10}>
+                <Button className="col-md-12"
+                onClick={() => this.back()}
+                >Back</Button>
+                </Col>
                 </Row>
                 
       

@@ -14,7 +14,7 @@ class AddAdvertisement extends React.Component {
         super(props);
         this.state = {
             type: "",
-            date_of_announcement: new Date().toLocaleDateString().toString(),
+            date_of_announcement: formatDate(new Date()),
             description:"",
             price: ""    
         };
@@ -45,6 +45,7 @@ class AddAdvertisement extends React.Component {
   
 
     render() {
+        console.log();
         return (
             
             <main className="row">

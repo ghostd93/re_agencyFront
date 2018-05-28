@@ -32,7 +32,9 @@ class EditImages extends React.Component {
         this.setState({image});
         console.log(image);
     }
-
+    back(){
+        hashHistory.push({pathname: "myAdvertisements"});
+      }
 
    getImg(){
     API.get(`advertisement/${this.props.location.query.advert_id}/image`).
@@ -85,7 +87,7 @@ class EditImages extends React.Component {
             <main className="row">
             <h1>Images</h1>
             <Row>
-            <Col md={4} xs={6}>
+            <Col md={2} xs={6}>
               <form ref={(el) => this.myFormRef = el}>
                 <FormGroup controlId="image">
                 <ControlLabel>Add Images</ControlLabel>
@@ -95,13 +97,20 @@ class EditImages extends React.Component {
                 </FormGroup>
               </form>
             </Col>
-            <Col md={4} xs={6}>
-                <Button className="col-md-4"
-                onClick={this.addImg.bind(this)}
-                >Submit</Button>
+            </Row>
+            <Row>
+            <Col md={2} xs={6}>
+            <Button className="col-md-12"
+            onClick={this.addImg.bind(this)}
+            >Submit</Button>
+           
             </Col>
-        </Row>
-              <form >
+            <Col md={2} xs={6}>
+            <Button className="col-md-12"
+            onClick={() => this.back()}
+            >Back</Button>
+            </Col>
+         </Row>
                 {
                     this.state.getImg.map(img =>{
                         return(
@@ -115,7 +124,6 @@ class EditImages extends React.Component {
                         )
                     })
                 }
-              </form>    
              
             </main>
         )

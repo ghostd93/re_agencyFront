@@ -12,7 +12,7 @@ class AddProperty extends React.Component {
         this.state = {
            property_type: "",
            description: "",
-           date_of_registration: new Date().toLocaleDateString().toString(),
+           date_of_registration:"",
            property_area: "",
            date_of_construction: "",
            number_of_floors: "",
@@ -67,7 +67,7 @@ class AddProperty extends React.Component {
     }
 
     handleClick(){
-        //  console.log(this.state);
+         console.log(this.state);
          API.post(`advertisement/${this.props.location.state.id}/property`, this.state)
           .then(response =>{
             console.log(response.status);
@@ -76,8 +76,7 @@ class AddProperty extends React.Component {
             }
           })
           .catch(error => {   
-            const err = error.response.message;
-            console.log(err);
+            console.log(error.message);
         })
       
     }
@@ -106,10 +105,10 @@ class AddProperty extends React.Component {
                             onChange={this.handleChange}
                             >
                                 <option ></option>
-                                <option value="mieszkanie" >Mieszkanie</option>
-                                <option value="dom">Dom</option>
-                                <option value="lokal">Lokal</option>
-                                <option value="dzialka">Działka</option>
+                                <option value="Flat" >Flat</option>
+                                <option value="House">House</option>
+                                <option value="Premises">Premises</option>
+                                <option value="Building land">Building land</option>
                             </FormControl>
                         </FormGroup>
                     </Col>
