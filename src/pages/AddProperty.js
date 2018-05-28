@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Col, Row, Button, FormGroup, FormControl, ControlLabel,InputGroup } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { hashHistory} from 'react-router';
 
@@ -126,9 +126,12 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="property_area">
                         <ControlLabel>Property area</ControlLabel>
-                        <FormControl type="number" placeholder="Property area" 
+                        <InputGroup>
+                        <FormControl type="number" min="0" placeholder="Property area" 
                         onChange={this.handleChange}
                         />
+                        <InputGroup.Addon>m<sup>2</sup></InputGroup.Addon>
+                        </InputGroup>
                         </FormGroup>
                     </Col>
                 </Row>
@@ -144,7 +147,7 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="number_of_floors">
                         <ControlLabel>Number of floors</ControlLabel>
-                        <FormControl type="number" placeholder="Number of floors" 
+                        <FormControl type="number" min="0" placeholder="Number of floors" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -154,7 +157,7 @@ class AddProperty extends React.Component {
                         <Col md={4} xs={6}>
                         <FormGroup controlId="number_of_rooms">
                         <ControlLabel>Number of rooms</ControlLabel>
-                        <FormControl type="number" placeholder="Number of rooms" 
+                        <FormControl type="number" min="0"  placeholder="Number of rooms" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -162,7 +165,7 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="floor">
                         <ControlLabel>Floor</ControlLabel>
-                        <FormControl type="number" placeholder="Floor" 
+                        <FormControl type="number" min="0" placeholder="Floor" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -172,7 +175,7 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="balcony">
                         <ControlLabel>Balcony</ControlLabel>
-                        <FormControl type="number" placeholder="Balcony" 
+                        <FormControl type="number" min="0" placeholder="Balcony" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -180,7 +183,7 @@ class AddProperty extends React.Component {
                         <Col md={4} xs={6}>
                         <FormGroup controlId="garage">
                         <ControlLabel>Garage</ControlLabel>
-                        <FormControl type="number" placeholder="Garage" 
+                        <FormControl type="number" min="0" placeholder="Garage" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -190,15 +193,18 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="land_area">
                         <ControlLabel>Land area</ControlLabel>
-                        <FormControl type="number" placeholder="Land area" 
+                        <InputGroup>
+                        <FormControl type="number" min="0" placeholder="Land area" 
                         onChange={this.handleChange}
                         />
+                        <InputGroup.Addon>m<sup>2</sup></InputGroup.Addon>
+                        </InputGroup>
                         </FormGroup>
                     </Col>
                     <Col md={4} xs={6}>
                         <FormGroup controlId="country">
                         <ControlLabel>Country</ControlLabel>
-                        <FormControl type="text" placeholder="Country" 
+                        <FormControl type="text"  placeholder="Country" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -226,7 +232,7 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="street_number">
                         <ControlLabel>Street number</ControlLabel>
-                        <FormControl type="text" placeholder="Street number" 
+                        <FormControl type="text" min="0" placeholder="Street number" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>
@@ -234,7 +240,7 @@ class AddProperty extends React.Component {
                     <Col md={4} xs={6}>
                         <FormGroup controlId="postal_code">
                         <ControlLabel>Postal code</ControlLabel>
-                        <FormControl type="text" placeholder="Postal code" 
+                        <FormControl type="text"  placeholder="Postal code" 
                         onChange={this.handleChange}
                         />
                         </FormGroup>

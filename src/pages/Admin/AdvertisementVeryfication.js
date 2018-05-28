@@ -91,8 +91,8 @@ class AdvertisementVeryfication extends React.Component{
                             <th>Date of announcement</th>
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Edit Status</th>
-                            <td>Property</td>
+                           {/* <th>Edit Status</th>*/}
+                            <th>Property</th>
                         </tr>
                         
                     </thead>
@@ -109,10 +109,12 @@ class AdvertisementVeryfication extends React.Component{
                           <td>{advert.price}</td>
                           <td>{advert.status}</td>
                           
-                          <td>
+                         {/*} <td>
                             <Button className="btn btn-success" onClick={() => this.confirm(advert.id)}>Confirm</Button>
                             <Button className="btn btn-danger" onClick={() => this.reject(advert.id)}>Reject</Button>
                           </td>
+                          */
+                        }
                           <td>
                             <Link to={{pathname: "propertyVeryfication", query: { advert: JSON.stringify(advert) } }}><Button>Property details</Button></Link>
                           </td>

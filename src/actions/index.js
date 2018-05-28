@@ -68,7 +68,7 @@ export function signIn(credentials) {
         .catch(error => {
             
             console.log("error",error);
-            swal("Ajaj karamba!", "Username/password is incorrect!", "error");
+            swal("Ajaj karamba!", "E-Mail/Password is incorrect. (" + error.message +")", "error");
             dispatch(logon(false,{}))
         })
     }
@@ -77,7 +77,7 @@ export function signIn(credentials) {
 export function logout() {
     return dispatch => {
         API.post('auth/logout').then((response) =>{
-            alert(response.data.message);
+            // alert(response.data.message);
         }
     );
       localStorage.removeItem('token');
@@ -97,6 +97,7 @@ export function signUp(credentials) {
             if(response.status === 201){
                 let { access_token } = response.data;
                 localStorage.setItem("token", access_token);
+                // alert(response.data.message);
                 console.log(response.data);
                 swal("Congratulations!", "Your account has been made! Check out your e-mail for activation link.", "success");
 
@@ -105,7 +106,7 @@ export function signUp(credentials) {
         })
         .catch(error => {
             console.log("error",error.response.data.error);
-            swal("Ajaj karamba!", "Username/E-Mail has already been used!", "error");
+            swal("Ajaj karamba!", "Username or E-Mail has been already used. (" + error.message +")", "error");
         })
     }
 }

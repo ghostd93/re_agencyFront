@@ -170,7 +170,7 @@ class PropertyVeryfication extends React.Component {
                             </tr>
                             <tr>
                                 <td>Land area</td>
-                                <td>{this.state.property.land_area}</td>
+                                <td>{this.state.property.land_area}m<sup>2</sup></td>
                             </tr>
                             <tr>
                                 <td>Number of rooms</td>
@@ -178,7 +178,7 @@ class PropertyVeryfication extends React.Component {
                             </tr>
                             <tr>
                                 <td>Property area</td>
-                                <td>{this.state.property.property_area}</td>
+                                <td>{this.state.property.property_area}m<sup>2</sup></td>
                             </tr>
                             <tr>
                                 <td>Property type</td>
