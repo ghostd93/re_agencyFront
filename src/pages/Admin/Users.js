@@ -110,7 +110,7 @@ class Users extends React.Component{
         return(
             
             <div className="row">
-                <h1>advertisements verification</h1>
+                <h1>Users</h1>
                 <Table hover responsive className="table-responsive">
                     <thead>
                         <tr>
