@@ -43,22 +43,20 @@ class EditProperty extends React.Component {
         if(this.state.empty){
             API.post(`advertisement/${this.props.location.query.advert_id}/property`, this.state)
             .then(response =>{
-            console.log(response);
+            // console.log(response);
             this.setState({disabled: true});
           })
           .catch(error => {
-            console.log(error);
-            alert(error);       
+            console.log(error);      
         })
         }else{
             API.patch(`advertisement/${this.props.location.query.advert_id}/property`, this.state)
             .then(response =>{
-            console.log(response);
+            // console.log(response);
             this.setState({disabled: true});
           })
           .catch(error => {
-            console.log(error);
-            alert(error);       
+            console.log(error);      
         })
         }
           
@@ -87,18 +85,17 @@ class EditProperty extends React.Component {
                 postal_code: property.postal_code,
 
             });
-            console.log(this.state.property);
+            // console.log(this.state.property);
 
         })
         .catch(error => {
             this.setState({empty: true})
-            console.log(error);
-            alert(error.response);       
+            console.log(error);     
         })
     }
     isDisabled(){
          this.state.disabled == true ? this.setState({disabled: false }): this.setState({disabled: true });
-         console.log(this.state.disabled);
+        //  console.log(this.state.disabled);
     }
     
       handleChange = event => {
@@ -230,6 +227,7 @@ class EditProperty extends React.Component {
                         <FormGroup controlId="land_area">
                         <ControlLabel>Land area</ControlLabel>
                         <FormControl type="number" 
+                        onChange={this.handleChange}
                         disabled={this.state.disabled}
                         value={this.state.land_area}
                         />
