@@ -68,7 +68,7 @@ export function signIn(credentials) {
         .catch(error => {
             
             console.log("error",error);
-            alert(error.response);
+            alert(error.message);
             dispatch(logon(false,{}))
         })
     }
@@ -77,7 +77,7 @@ export function signIn(credentials) {
 export function logout() {
     return dispatch => {
         API.post('auth/logout').then((response) =>{
-            alert(response.data.message);
+            // alert(response.data.message);
         }
     );
       localStorage.removeItem('token');
@@ -97,14 +97,14 @@ export function signUp(credentials) {
             if(response.status === 201){
                 let { access_token } = response.data;
                 localStorage.setItem("token", access_token);
-                alert(response.data.message);
+                // alert(response.data.message);
                 console.log(response.data);
             }
             
         })
         .catch(error => {
             console.log("error",error.response.data.error);
-            alert(error.response.data.error);
+            alert(error.message);
         })
     }
 }

@@ -71,7 +71,7 @@ class AddAdvertisement extends React.Component {
                         <ControlLabel>Price</ControlLabel>
                         <InputGroup>
                         <InputGroup.Addon>$</InputGroup.Addon>
-                        <FormControl type="number" step="0.01" 
+                        <FormControl type="number" min="0" step="0.01" 
                         onChange={this.handleChange}
                         />
                         </InputGroup>
