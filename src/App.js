@@ -7,7 +7,6 @@ import Layout from './pages/Layout';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import About from './pages/About';
-import Home from './pages/Home';
 import Advertisements from './pages/Advertisements';
 import Property from './pages/Property';
 import AddAdvertisement from './pages/AddAdvertisement';
@@ -34,9 +33,8 @@ export default class App extends Component {
       <div>
       <Router history={hashHistory} >
         <Route path="/"  component={Layout} getQ={this.getQuery}>
-            <IndexRoute component={Home} />
+            <IndexRoute component={About} />
             <Route path="about" component={About}></Route>
-            <Route path="home" component={Home}></Route>
             <Route path="advertisements"  component={Advertisements}></Route>
             <Route path="property"  component={Property}></Route>
             <Route path="addAdvertisement"  component={AddAdvertisement}></Route>

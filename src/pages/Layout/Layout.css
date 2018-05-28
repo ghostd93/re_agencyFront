@@ -5,14 +5,16 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+main{
+    min-height: 900px;
+}
+footer {
+    background-color: rgb(238, 238, 238);
+    height: 300px;
+}
 
 .buttons{
     padding: 6px 5px 0px 0px;  
-}
-
-.homePhoto{
-    max-width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sign{
@@ -32,6 +34,7 @@
     position: static !important;
 
   }
+
 
 .advPhoto{
     padding: 0;

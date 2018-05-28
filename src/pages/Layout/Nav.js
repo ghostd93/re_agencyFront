@@ -56,10 +56,10 @@ class Nav extends React.Component{
         const  { username }   = this.props.auth.user;
         const  { admin }   = this.props.auth.user;
         return (
-            <Navbar collapseOnSelect>
+            <Navbar  collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <Link to="home">REagency</Link>
+                        <Link to="about">REagency</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
@@ -88,8 +88,9 @@ class Nav extends React.Component{
                                 Browse
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                            <MenuItem eventKey="1"><Link to="advertisements">Real Estates</Link></MenuItem>
-                            <MenuItem eventKey="2"><Link to="about">About Us</Link></MenuItem>
+                            <MenuItem eventKey="1"><Link to="about">About Us</Link></MenuItem>
+                            <MenuItem eventKey="2" onClick={() => this.props.getQuery("")}><Link to="advertisements" >Real Estates</Link></MenuItem>
+                            <MenuItem eventKey="3">Something else here</MenuItem>
                             </Dropdown.Menu>
                         </Dropdown>
                     </li>

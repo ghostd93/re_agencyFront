@@ -24,6 +24,7 @@ class Profile extends React.Component {
         <MenuItem eventKey="1"><Link to="PersonalDetails">Personal Details</Link></MenuItem>
         <MenuItem eventKey="2"><Link to="addAdvertisement">Add advertisement</Link></MenuItem>
         <MenuItem eventKey="3"><Link to="myAdvertisements">My advertisement</Link></MenuItem>
+        <MenuItem eventKey="4">Something else here</MenuItem>    
         </div>
     );
   }
