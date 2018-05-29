@@ -88,7 +88,7 @@ class Nav extends React.Component{
                                 Browse
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                            <MenuItem eventKey="1"><Link to="advertisements">Real Estates</Link></MenuItem>
+                            <MenuItem eventKey="1"><Link to="advertisements"onClick={() => this.props.getQuery("")}>Real Estates</Link></MenuItem>
                             <MenuItem eventKey="2"><Link to="about">About Us</Link></MenuItem>
                             </Dropdown.Menu>
                         </Dropdown>
