@@ -51,7 +51,7 @@ class SignUp extends React.Component{
                     />
                     </FormGroup>
                     <FormGroup controlId="name" bsSize="xsmall">
-                    <ControlLabel>Name</ControlLabel>
+                    <ControlLabel>Username</ControlLabel>
                     <FormControl
                         value={this.state.name}
                         onChange={this.handleChange}

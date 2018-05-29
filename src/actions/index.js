@@ -2,7 +2,7 @@ import decode  from "jwt-decode";
 import setAuthorizationToken from '../auth/setAuthToken';
 import { LOGON, QUERY, PAGE } from '../actions/types';
 import { hashHistory} from 'react-router';
-
+import swal from 'sweetalert';
 import API from "../Api"
 
 
@@ -68,7 +68,7 @@ export function signIn(credentials) {
         .catch(error => {
             
             console.log("error",error);
-            alert(error.message);
+            swal("Ajaj karamba!", "E-Mail/Password is incorrect. (" + error.message +")", "error");
             dispatch(logon(false,{}))
         })
     }
@@ -99,12 +99,14 @@ export function signUp(credentials) {
                 localStorage.setItem("token", access_token);
                 // alert(response.data.message);
                 console.log(response.data);
+                swal("Congratulations!", "Your account has been made! Check out your e-mail for activation link.", "success");
+
             }
             
         })
         .catch(error => {
             console.log("error",error.response.data.error);
-            alert(error.message);
+            swal("Ajaj karamba!", "Username or E-Mail has been already used. (" + error.message +")", "error");
         })
     }
 }

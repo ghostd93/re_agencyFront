@@ -49,54 +49,53 @@ class AddAdvertisement extends React.Component {
         return (
             
             <main className="row">
-            <h1>Advertisement 1/2</h1>
-              <form >
-                <Row>
-                    <Col md={6} xs={10}>
-                        <FormGroup controlId="type" bsSize="xsmall">
-                        <ControlLabel>Type</ControlLabel>
-                            <FormControl componentClass="select"
+                <h1>Advertisement 1/2</h1>
+                <form >
+                    <Row>
+                        <Col md={6} xs={10}>
+                            <FormGroup controlId="type" bsSize="xsmall">
+                            <ControlLabel>Type</ControlLabel>
+                                <FormControl componentClass="select"
+                                onChange={this.handleChange}
+                                >
+                                    <option ></option>
+                                    <option value="sale" >Sale</option>
+                                    <option value="rent">Rent</option>
+                                </FormControl>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6} xs={10}>
+                            <FormGroup controlId="price" >
+                            <ControlLabel>Price</ControlLabel>
+                            <InputGroup>
+                            <InputGroup.Addon>$</InputGroup.Addon>
+                            <FormControl type="number" step="0.01" 
                             onChange={this.handleChange}
-                            >
-                                <option ></option>
-                                <option value="sale" >Sale</option>
-                                <option value="rent">Rent</option>
-                            </FormControl>
-                        </FormGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6} xs={10}>
-                        <FormGroup controlId="price" >
-                        <ControlLabel>Price</ControlLabel>
-                        <InputGroup>
-                        <InputGroup.Addon>$</InputGroup.Addon>
-                        <FormControl type="number" min="0" step="0.01" 
-                        onChange={this.handleChange}
-                        />
-                        </InputGroup>
-                        </FormGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6} xs={10}>
-                        <FormGroup controlId="description">
-                        <ControlLabel>Description</ControlLabel>
-                        <FormControl componentClass="textarea" placeholder="description" 
-                        onChange={this.handleChange}
-                        />
-                </FormGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6} xs={10}>
-                    <Button className="col-md-12"
-                    onClick={this.handleClick.bind(this)}
-                    >Submit</Button>
-                    </Col>
-                </Row>
-              </form>    
-              
+                            />
+                            </InputGroup>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6} xs={10}>
+                            <FormGroup controlId="description">
+                            <ControlLabel>Description</ControlLabel>
+                            <FormControl componentClass="textarea" placeholder="description" 
+                            onChange={this.handleChange}
+                            />
+                    </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6} xs={10}>
+                        <Button className="col-md-12"
+                        onClick={this.handleClick.bind(this)}
+                        >Submit</Button>
+                        </Col>
+                    </Row>
+                </form>    
             </main>
         )
     }

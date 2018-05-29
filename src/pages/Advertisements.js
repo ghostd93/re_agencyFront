@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Pager, Col, Row, Button, Image  } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-import {  getPage, getQuery } from '../actions/index';
+import {  getPage } from '../actions/index';
 
 
 import API from "../Api"
@@ -105,9 +105,6 @@ class Advertisements extends React.Component {
             this.props.getPage(this.props.auth.page +1);
         }
     }
-    resetQuery(){
-        this.props.getQuery("");
-    }
 
     render() {
 
@@ -116,15 +113,7 @@ class Advertisements extends React.Component {
         return (
            <div>
            <Row >
-           <h1>
-           {
-            this.props.auth.query !== "" ?(
-                <Button onClick={()=>this.resetQuery()}>{this.props.auth.query} x</Button>
-           ): ""
-           }
-           
-           
-           </h1>
+           <h1>{this.props.auth.query}</h1>
                    {
                        this.state.advertisements.map((advert) => {  
                            return(
@@ -175,4 +164,4 @@ function mapStateToProps(state) {
     };
   }
 
-  export default connect(mapStateToProps, {  getPage, getQuery } )(Advertisements);
+  export default connect(mapStateToProps, {  getPage } )(Advertisements);
