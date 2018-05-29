@@ -27,9 +27,6 @@ main{
 .buttons{
     padding: 6px 5px 0px 0px;  
 }
-body{
-    margin-bottom: 25px;
-} 
 
 .homePhoto{
     max-width: 100%;
