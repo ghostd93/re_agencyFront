@@ -5,6 +5,24 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+body{
+    margin-bottom: 25px;
+    background-color: #FAFAFA;
+}
+
+main{
+    background-color: #FFF;
+    margin: 25px 0px 25px 0px;
+}
+
+.header{
+    background-color: #90A4AE;
+}
+
+.logo{
+    color: #fff;
+    font-weight: 550;
+}
 
 .buttons{
     padding: 6px 5px 0px 0px;  
@@ -20,10 +38,11 @@
     padding: 10px;
 }
 
+.upperCase{
+    text-transform: uppercase;
+}
+
 .card {
-    padding: 0;
-    background-color: rgb(238, 238, 238);
-    margin:5px 0px;
     min-height: 250px;
 }
 

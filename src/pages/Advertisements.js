@@ -117,27 +117,29 @@ class Advertisements extends React.Component {
                    {
                        this.state.advertisements.map((advert) => {  
                            return(
-                               <Col className="card" xs={12} md={12} key={advert.id}>
-                                <Row>
-                                    <Col  xs={12} md={4} >
-                                        <Image src={advert.photos[0].thumb_url} alt="" className="advPhoto"/>
+                               <main>
+                                    <Col className="card" xs={12} md={12} key={advert.id}>
+                                        <Row>
+                                            <Col  xs={12} md={4} >
+                                                <Image src={advert.photos[0].thumb_url} alt="" className="advPhoto"/>
+                                            </Col>
+                                            <Col  xs={12} md={8} >
+                                                <div className="cardDesc">
+                                                <h1 className="upperCase">{advert.type}</h1>
+                                                <p>Price: {advert.price} zł</p>
+                                                <p>Description : {advert.description}</p>
+                                                <p>Date of announcement: {advert.date_of_announcement}</p>
+                                                <p><Link to={{pathname: "property", query: { id: advert.id } }}><Button>More informations</Button></Link></p>
+                                                {this.props.auth.user.admin ?
+                                                    (<p><Button className="btn btn-danger" onClick={() => this.deleteAd(advert.id)}>Delete</Button></p>)
+                                                    : 
+                                                    ""}
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <hr/>
                                     </Col>
-                                    <Col  xs={12} md={8} >
-                                        <div className="cardDesc">
-                                        <p>Date of announcement: {advert.date_of_announcement}</p>
-                                        <p>Price: {advert.price} zł</p>
-                                        <p>description : {advert.description}</p>
-                                        <p>For {advert.type}</p>
-                                        <p><Link to={{pathname: "property", query: { id: advert.id } }}><Button>More...</Button></Link></p>
-                                        {this.props.auth.user.admin ?
-                                             (<p><Button className="btn btn-danger" onClick={() => this.deleteAd(advert.id)}>Delete</Button></p>)
-                                             : 
-                                             ""}
-                                        
-                                        </div>
-                                    </Col>
-                                </Row>
-                               </Col>
+                                </main>
                            )
                        })
                    }

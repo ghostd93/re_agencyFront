@@ -56,10 +56,10 @@ class Nav extends React.Component{
         const  { username }   = this.props.auth.user;
         const  { admin }   = this.props.auth.user;
         return (
-            <Navbar collapseOnSelect>
+            <Navbar collapseOnSelect className="header">
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <Link to="home">REagency</Link>
+                        <Link to="home"><span className="logo">REagency</span></Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
