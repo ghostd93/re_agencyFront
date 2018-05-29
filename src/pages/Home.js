@@ -19,7 +19,7 @@ export default class Home extends React.Component {
                             </Col>
                             <Col md={6} mdPull={6}>
                                 <section>
-                                <h3>OFFICE OPENING</h3>
+                                <h3>OFFICE OPENING TIME</h3>
                                 <Table striped bordered condensed hover>
                                     <tbody>
                                         <tr>
